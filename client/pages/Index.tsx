@@ -17,11 +17,11 @@ export default function Index() {
       <div className="flex-1 flex items-center justify-center bg-white px-8 py-12">
         <div className="w-full max-w-sm">
           {/* Logo and Company Name */}
-          <div className="mb-12">
+          <div className="mb-12 text-center">
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2F54f8588728e94fb0b8646e3f37922df0%2Fd7768f3705f94b159a78994f71c5676e?format=webp&width=800"
               alt="AMMAR Industrial Corporation Logo"
-              className="h-32 object-contain"
+              className="h-48 object-contain mx-auto"
             />
           </div>
 
