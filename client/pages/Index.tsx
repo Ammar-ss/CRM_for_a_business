@@ -104,7 +104,7 @@ export default function Index() {
       {/* Right side - Background with Image */}
       <div className="flex-1 bg-gradient-to-br from-blue-50 to-gray-100 relative overflow-hidden flex items-center justify-center">
         <img
-          src="https://cdn.builder.io/api/v1/image/assets%2F54f8588728e94fb0b8646e3f37922df0%2F1ce5ec17af3f46e0ba0dec58d2dbaeea?format=webp&width=800"
+          src="https://cdn.builder.io/api/v1/image/assets%2F54f8588728e94fb0b8646e3f37922df0%2F18131d2f53ad4e7780e2c0e6abcabfe9?format=webp&width=800"
           alt="AMMAR Industrial Equipment"
           className="w-full h-full object-contain"
         />
