@@ -101,70 +101,13 @@ export default function Index() {
         </div>
       </div>
 
-      {/* Right side - Geometric Pattern Background */}
-      <div className="flex-1 bg-gradient-to-br from-blue-50 to-gray-100 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <svg
-            className="w-full h-full object-cover"
-            viewBox="0 0 800 600"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <pattern
-                id="geometric-pattern"
-                x="0"
-                y="0"
-                width="100"
-                height="100"
-                patternUnits="userSpaceOnUse"
-              >
-                <polygon
-                  points="50,0 100,50 50,100 0,50"
-                  fill="rgba(59, 130, 246, 0.05)"
-                  stroke="rgba(59, 130, 246, 0.1)"
-                  strokeWidth="0.5"
-                />
-                <polygon
-                  points="25,25 75,25 75,75 25,75"
-                  fill="rgba(59, 130, 246, 0.03)"
-                  stroke="rgba(59, 130, 246, 0.08)"
-                  strokeWidth="0.3"
-                />
-              </pattern>
-              <linearGradient id="main-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="rgba(219, 234, 254, 0.8)" />
-                <stop offset="50%" stopColor="rgba(243, 244, 246, 0.9)" />
-                <stop offset="100%" stopColor="rgba(229, 231, 235, 0.8)" />
-              </linearGradient>
-            </defs>
-            
-            <rect width="100%" height="100%" fill="url(#main-gradient)" />
-            <rect width="100%" height="100%" fill="url(#geometric-pattern)" />
-            
-            {/* 3D-like geometric shapes */}
-            <g opacity="0.6">
-              <polygon
-                points="600,100 700,50 750,150 650,200"
-                fill="rgba(59, 130, 246, 0.1)"
-                stroke="rgba(59, 130, 246, 0.2)"
-                strokeWidth="1"
-              />
-              <polygon
-                points="650,200 750,150 800,250 700,300"
-                fill="rgba(59, 130, 246, 0.08)"
-                stroke="rgba(59, 130, 246, 0.15)"
-                strokeWidth="1"
-              />
-              <polygon
-                points="500,300 600,250 650,350 550,400"
-                fill="rgba(59, 130, 246, 0.12)"
-                stroke="rgba(59, 130, 246, 0.18)"
-                strokeWidth="1"
-              />
-            </g>
-          </svg>
-        </div>
+      {/* Right side - Background Image */}
+      <div className="flex-1 relative overflow-hidden">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2F54f8588728e94fb0b8646e3f37922df0%2F1ce5ec17af3f46e0ba0dec58d2dbaeea?format=webp&width=800"
+          alt="AMMAR Industrial Equipment"
+          className="w-full h-full object-cover"
+        />
       </div>
     </div>
   );
