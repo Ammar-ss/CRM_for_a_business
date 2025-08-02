@@ -1,61 +1,150 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
-  useEffect(() => {
-    fetchDemo();
-  }, []);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
 
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle login logic here
+    console.log("Login attempt:", { username, password, rememberMe });
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
+    <div className="min-h-screen flex">
+      {/* Left side - Login Form */}
+      <div className="flex-1 flex items-center justify-center bg-white px-8 py-12">
+        <div className="w-full max-w-sm">
+          {/* Logo and Company Name */}
+          <div className="mb-12">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-8 h-8 bg-blue-600 flex items-center justify-center rounded">
+                <span className="text-white font-bold text-lg">A</span>
+              </div>
+              <span className="text-xl font-semibold text-gray-900">MMAR</span>
+            </div>
+            <div className="text-sm text-gray-600 ml-11">Industrial Corporation</div>
+          </div>
+
+          {/* Sign In Heading */}
+          <h1 className="text-2xl font-medium text-gray-900 mb-8">Sign In</h1>
+
+          {/* Login Form */}
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Username Field */}
+            <div>
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full px-0 py-3 text-gray-900 placeholder-gray-500 border-0 border-b border-gray-300 bg-transparent focus:border-blue-600 focus:outline-none focus:ring-0"
+                required
+              />
+            </div>
+
+            {/* Password Field */}
+            <div>
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-0 py-3 text-gray-900 placeholder-gray-500 border-0 border-b border-gray-300 bg-transparent focus:border-blue-600 focus:outline-none focus:ring-0"
+                required
+              />
+            </div>
+
+            {/* Remember me checkbox */}
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="remember"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+              />
+              <label htmlFor="remember" className="ml-2 text-sm text-gray-600">
+                Remember me
+              </label>
+            </div>
+
+            {/* Sign In Button */}
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white py-3 px-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium"
+            >
+              Sign In
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {/* Right side - Geometric Pattern Background */}
+      <div className="flex-1 bg-gradient-to-br from-blue-50 to-gray-100 relative overflow-hidden">
+        <div className="absolute inset-0">
           <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
+            className="w-full h-full object-cover"
+            viewBox="0 0 800 600"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
+            <defs>
+              <pattern
+                id="geometric-pattern"
+                x="0"
+                y="0"
+                width="100"
+                height="100"
+                patternUnits="userSpaceOnUse"
+              >
+                <polygon
+                  points="50,0 100,50 50,100 0,50"
+                  fill="rgba(59, 130, 246, 0.05)"
+                  stroke="rgba(59, 130, 246, 0.1)"
+                  strokeWidth="0.5"
+                />
+                <polygon
+                  points="25,25 75,25 75,75 25,75"
+                  fill="rgba(59, 130, 246, 0.03)"
+                  stroke="rgba(59, 130, 246, 0.08)"
+                  strokeWidth="0.3"
+                />
+              </pattern>
+              <linearGradient id="main-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="rgba(219, 234, 254, 0.8)" />
+                <stop offset="50%" stopColor="rgba(243, 244, 246, 0.9)" />
+                <stop offset="100%" stopColor="rgba(229, 231, 235, 0.8)" />
+              </linearGradient>
+            </defs>
+            
+            <rect width="100%" height="100%" fill="url(#main-gradient)" />
+            <rect width="100%" height="100%" fill="url(#geometric-pattern)" />
+            
+            {/* 3D-like geometric shapes */}
+            <g opacity="0.6">
+              <polygon
+                points="600,100 700,50 750,150 650,200"
+                fill="rgba(59, 130, 246, 0.1)"
+                stroke="rgba(59, 130, 246, 0.2)"
+                strokeWidth="1"
+              />
+              <polygon
+                points="650,200 750,150 800,250 700,300"
+                fill="rgba(59, 130, 246, 0.08)"
+                stroke="rgba(59, 130, 246, 0.15)"
+                strokeWidth="1"
+              />
+              <polygon
+                points="500,300 600,250 650,350 550,400"
+                fill="rgba(59, 130, 246, 0.12)"
+                stroke="rgba(59, 130, 246, 0.18)"
+                strokeWidth="1"
+              />
+            </g>
           </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
+        </div>
       </div>
     </div>
   );
