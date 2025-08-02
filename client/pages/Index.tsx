@@ -26,7 +26,7 @@ export default function Index() {
           </div>
 
           {/* Sign In Heading */}
-          <h1 className="text-2xl font-medium text-gray-900 mb-8">Sign In</h1>
+          <h1 className="text-lg font-medium text-gray-900 mb-8">Sign In</h1>
 
           {/* Login Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
