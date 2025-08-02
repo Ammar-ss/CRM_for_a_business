@@ -21,7 +21,7 @@ export default function Index() {
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2F54f8588728e94fb0b8646e3f37922df0%2Fd7768f3705f94b159a78994f71c5676e?format=webp&width=800"
               alt="AMMAR Industrial Corporation Logo"
-              className="h-16 object-contain"
+              className="h-32 object-contain"
             />
           </div>
 
