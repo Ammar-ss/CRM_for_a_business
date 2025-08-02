@@ -82,6 +82,28 @@ export default function Index() {
               Sign In
             </button>
           </form>
+
+          {/* Additional Options */}
+          <div className="mt-6 text-center space-y-3">
+            <div>
+              <button
+                type="button"
+                className="text-blue-600 text-sm hover:text-blue-700 hover:underline focus:outline-none"
+                onClick={() => console.log("Create new account clicked")}
+              >
+                Create new account
+              </button>
+            </div>
+            <div>
+              <button
+                type="button"
+                className="text-gray-600 text-sm hover:text-gray-700 hover:underline focus:outline-none"
+                onClick={() => console.log("Forgot password clicked")}
+              >
+                Forgot password?
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
