@@ -19,8 +19,12 @@ export default function Index() {
           {/* Logo and Company Name */}
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-8 h-8 bg-blue-600 flex items-center justify-center rounded">
-                <span className="text-white font-bold text-lg">A</span>
+              <div className="w-8 h-8 flex items-center justify-center rounded overflow-hidden">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2F54f8588728e94fb0b8646e3f37922df0%2F9fdf82aed845410d835d1df6e8c62f34?format=webp&width=800"
+                  alt="AMMAR Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="text-xl font-semibold text-gray-900">MMAR</span>
             </div>
