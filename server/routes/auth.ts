@@ -2,6 +2,22 @@ import { RequestHandler } from "express";
 import { RegisterRequest, LoginRequest, AuthResponse } from "@shared/auth";
 import { UserDatabase } from "../database";
 
+function validatePassword(password: string): string | null {
+  if (password.length < 8) {
+    return "Password must be at least 8 characters long";
+  }
+
+  if (!/\d/.test(password)) {
+    return "Password must contain at least 1 number";
+  }
+
+  if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+    return "Password must contain at least 1 special character";
+  }
+
+  return null;
+}
+
 export const handleRegister: RequestHandler = async (req, res) => {
   try {
     const { username, email, password }: RegisterRequest = req.body;
