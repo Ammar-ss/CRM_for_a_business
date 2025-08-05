@@ -42,6 +42,9 @@ export default function Dashboard() {
   const [user, setUser] = useState<User | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("dashboard");
+  const [showProductForm, setShowProductForm] = useState(false);
+  const [showCalculator, setShowCalculator] = useState(false);
+  const [activeTab, setActiveTab] = useState("products");
 
   useEffect(() => {
     // Check authentication
@@ -99,9 +102,9 @@ export default function Dashboard() {
       } lg:relative lg:z-auto`}>
         {/* Logo Header */}
         <div className="flex items-center justify-between p-6 border-b">
-          <img 
-            src="https://cdn.builder.io/api/v1/image/assets%2F54f8588728e94fb0b8646e3f37922df0%2Fd7768f3705f94b159a78994f71c5676e?format=webp&width=800" 
-            alt="AMMAR Logo" 
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2F54f8588728e94fb0b8646e3f37922df0%2Fd7768f3705f94b159a78994f71c5676e?format=webp&width=800"
+            alt="AMMAR Logo"
             className="h-12 object-contain"
           />
           <button
@@ -151,49 +154,32 @@ export default function Dashboard() {
 
       {/* Main Content */}
       <div className="lg:ml-64">
-        {/* Top Header */}
-        <header className="bg-white shadow-sm border-b px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => setSidebarOpen(true)}
-                className="lg:hidden text-gray-500 hover:text-gray-700"
-              >
-                <Menu size={24} />
-              </button>
-              <h1 className="text-xl font-semibold text-gray-900 capitalize">
-                {menuItems.find(item => item.id === activeSection)?.label || "Dashboard"}
-              </h1>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-600">Welcome, {user.username}</span>
-            </div>
-          </div>
-        </header>
+        {/* Dashboard Header */}
+        <DashboardHeader
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          onShowProductForm={() => setShowProductForm(true)}
+          onShowClientForm={() => alert("Client form - Coming Soon")}
+          onShowSupplierForm={() => alert("Supplier form - Coming Soon")}
+          onShowCalculator={() => setShowCalculator(true)}
+        />
 
         {/* Page Content */}
         <main className="p-6">
           <div className="max-w-7xl mx-auto">
-            {activeSection === "dashboard" ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Dashboard Overview Cards */}
-                <div className="bg-white p-6 rounded-lg shadow-sm border">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Quick Stats</h3>
-                  <p className="text-gray-600">Overview of key metrics and data</p>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow-sm border">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Recent Activity</h3>
-                  <p className="text-gray-600">Latest transactions and updates</p>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow-sm border">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Notifications</h3>
-                  <p className="text-gray-600">Important alerts and messages</p>
+            {activeTab === "products" ? (
+              <div className="bg-white rounded-lg shadow-sm border">
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Products Management</h3>
+                  <p className="text-gray-600">
+                    Manage your product inventory, categories, and pricing. Click "Add Product" to create new products.
+                  </p>
                 </div>
               </div>
             ) : (
               <div className="bg-white p-8 rounded-lg shadow-sm border text-center">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4 capitalize">
-                  {menuItems.find(item => item.id === activeSection)?.label}
+                  {activeTab}
                 </h2>
                 <p className="text-gray-600 mb-6">
                   This section is under development. The content for this module will be implemented based on your specific business requirements.
@@ -206,6 +192,21 @@ export default function Dashboard() {
           </div>
         </main>
       </div>
+
+      {/* Modals */}
+      <ProductForm
+        isOpen={showProductForm}
+        onClose={() => setShowProductForm(false)}
+        onSuccess={() => {
+          alert("Product created successfully!");
+          setShowProductForm(false);
+        }}
+      />
+
+      <Calculator
+        isOpen={showCalculator}
+        onClose={() => setShowCalculator(false)}
+      />
     </div>
   );
 }
