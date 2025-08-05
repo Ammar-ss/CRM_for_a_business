@@ -162,6 +162,7 @@ export default function Dashboard() {
           onShowClientForm={() => alert("Client form - Coming Soon")}
           onShowSupplierForm={() => alert("Supplier form - Coming Soon")}
           onShowCalculator={() => setShowCalculator(true)}
+          onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
         />
 
         {/* Page Content */}
