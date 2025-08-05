@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { LogOut, Menu, X, ChevronRight } from "lucide-react";
+import DashboardHeader from "../components/DashboardHeader";
+import ProductForm from "../components/ProductForm";
+import Calculator from "../components/Calculator";
 
 interface User {
   id: string;
