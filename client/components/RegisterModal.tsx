@@ -144,7 +144,7 @@ export default function RegisterModal({ isOpen, onClose, onSuccess }: RegisterMo
               onChange={handleChange}
               className="w-full px-0 py-3 text-gray-900 placeholder-gray-500 border-0 border-b border-gray-300 bg-transparent focus:border-blue-600 focus:outline-none focus:ring-0"
               required
-              minLength={6}
+              minLength={8}
             />
           </div>
 
