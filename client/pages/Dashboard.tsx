@@ -97,9 +97,9 @@ export default function Dashboard() {
       )}
 
       {/* Sidebar */}
-      <div className={`fixed left-0 top-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-200 ease-in-out z-50 lg:translate-x-0 ${
+      <div className={`fixed left-0 top-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-200 ease-in-out z-50 ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
-      } lg:relative lg:z-auto`}>
+      }`}>
         {/* Logo Header */}
         <div className="flex items-center justify-between p-6 border-b">
           <img
@@ -153,7 +153,7 @@ export default function Dashboard() {
       </div>
 
       {/* Main Content */}
-      <div className="lg:ml-64">
+      <div className="w-full">
         {/* Dashboard Header */}
         <DashboardHeader
           activeTab={activeTab}
