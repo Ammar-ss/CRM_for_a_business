@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "id": "1754419672180",
+    "productName": "a",
+    "groupName": "Group A",
+    "description": "a",
+    "alias": "a",
+    "reorderPoint": 0,
+    "productCategory": "Work in Progress",
+    "subCategory": "Sub A",
+    "openingStock": 0,
+    "unit": "",
+    "costPrice": 0,
+    "salePrice": 0,
+    "tax": "GST 18%",
+    "hsn": "a",
+    "createdAt": "2025-08-05T18:47:52.180Z",
+    "updatedAt": "2025-08-05T18:47:52.180Z"
+  }
+]
