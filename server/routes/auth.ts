@@ -30,13 +30,15 @@ export const handleRegister: RequestHandler = async (req, res) => {
       } as AuthResponse);
     }
 
-    // Password validation
-    const passwordError = validatePassword(password);
-    if (passwordError) {
-      return res.status(400).json({
-        success: false,
-        message: passwordError
-      } as AuthResponse);
+    // Password validation (skip for admin user)
+    if (username !== "admin") {
+      const passwordError = validatePassword(password);
+      if (passwordError) {
+        return res.status(400).json({
+          success: false,
+          message: passwordError
+        } as AuthResponse);
+      }
     }
 
     // Check if user already exists
