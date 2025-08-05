@@ -64,6 +64,11 @@ export default function Index() {
 
           {/* Login Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded text-sm">
+                {error}
+              </div>
+            )}
             {/* Username Field */}
             <div>
               <input
@@ -105,9 +110,10 @@ export default function Index() {
             {/* Sign In Button */}
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-3 px-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium"
+              disabled={isLoading}
+              className="w-full bg-blue-600 text-white py-3 px-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium disabled:opacity-50"
             >
-              Sign In
+              {isLoading ? "Signing In..." : "Sign In"}
             </button>
           </form>
 
