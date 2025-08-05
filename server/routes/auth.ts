@@ -14,10 +14,12 @@ export const handleRegister: RequestHandler = async (req, res) => {
       } as AuthResponse);
     }
 
-    if (password.length < 6) {
+    // Password validation
+    const passwordError = validatePassword(password);
+    if (passwordError) {
       return res.status(400).json({
         success: false,
-        message: "Password must be at least 6 characters long"
+        message: passwordError
       } as AuthResponse);
     }
 
