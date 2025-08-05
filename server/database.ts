@@ -4,7 +4,7 @@ import path from "path";
 
 const DB_FILE = path.join(process.cwd(), "users.json");
 
-// Initialize database file if it doesn't exist
+// Initialize database file if it doesn't exist or is empty
 if (!fs.existsSync(DB_FILE)) {
   const defaultUsers: User[] = [
     {
@@ -16,6 +16,22 @@ if (!fs.existsSync(DB_FILE)) {
     }
   ];
   fs.writeFileSync(DB_FILE, JSON.stringify(defaultUsers, null, 2));
+} else {
+  // Check if file is empty and seed if needed
+  const data = fs.readFileSync(DB_FILE, "utf-8");
+  const users = JSON.parse(data) as User[];
+  if (users.length === 0) {
+    const defaultUsers: User[] = [
+      {
+        id: "admin-default",
+        username: "admin",
+        email: "admin@ammar.com",
+        password: "123",
+        createdAt: new Date().toISOString()
+      }
+    ];
+    fs.writeFileSync(DB_FILE, JSON.stringify(defaultUsers, null, 2));
+  }
 }
 
 export class UserDatabase {
