@@ -97,7 +97,7 @@ export default function Dashboard() {
       )}
 
       {/* Sidebar */}
-      <div className={`fixed left-0 top-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-200 ease-in-out z-50 ${
+      <div className={`fixed left-0 top-0 h-screen w-64 bg-white shadow-lg transform transition-transform duration-200 ease-in-out z-50 flex flex-col ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}>
         {/* Logo Header */}
@@ -116,7 +116,7 @@ export default function Dashboard() {
         </div>
 
         {/* Navigation Menu */}
-        <nav className="flex-1 overflow-y-auto">
+        <nav className="flex-1 overflow-y-auto min-h-0">
           <ul className="p-4 space-y-1">
             {menuItems.map((item) => (
               <li key={item.id}>
@@ -137,7 +137,7 @@ export default function Dashboard() {
         </nav>
 
         {/* User Info & Logout */}
-        <div className="border-t p-4">
+        <div className="border-t p-4 flex-shrink-0 bg-white">
           <div className="mb-3">
             <p className="text-sm font-medium text-gray-900">{user.username}</p>
             <p className="text-xs text-gray-500">{user.email}</p>
