@@ -6,7 +6,16 @@ const DB_FILE = path.join(process.cwd(), "users.json");
 
 // Initialize database file if it doesn't exist
 if (!fs.existsSync(DB_FILE)) {
-  fs.writeFileSync(DB_FILE, JSON.stringify([], null, 2));
+  const defaultUsers: User[] = [
+    {
+      id: "admin-default",
+      username: "admin",
+      email: "admin@ammar.com",
+      password: "123",
+      createdAt: new Date().toISOString()
+    }
+  ];
+  fs.writeFileSync(DB_FILE, JSON.stringify(defaultUsers, null, 2));
 }
 
 export class UserDatabase {
