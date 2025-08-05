@@ -81,13 +81,12 @@ export default function Index() {
           {/* Additional Options */}
           <div className="mt-6 text-center space-y-3">
             <div>
-              <button
-                type="button"
+              <Link
+                to="/register"
                 className="text-blue-600 text-sm hover:text-blue-700 hover:underline focus:outline-none"
-                onClick={() => console.log("Create new account clicked")}
               >
                 Create new account
-              </button>
+              </Link>
             </div>
             <div>
               <button
