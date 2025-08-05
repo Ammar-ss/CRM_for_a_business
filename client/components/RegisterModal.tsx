@@ -17,9 +17,32 @@ export default function RegisterModal({ isOpen, onClose, onSuccess }: RegisterMo
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const validatePassword = (password: string): string | null => {
+    if (password.length < 8) {
+      return "Password must be at least 8 characters long";
+    }
+
+    if (!/\d/.test(password)) {
+      return "Password must contain at least 1 number";
+    }
+
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      return "Password must contain at least 1 special character";
+    }
+
+    return null;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+
+    // Validate password requirements
+    const passwordError = validatePassword(formData.password);
+    if (passwordError) {
+      setError(passwordError);
+      return;
+    }
 
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match");
