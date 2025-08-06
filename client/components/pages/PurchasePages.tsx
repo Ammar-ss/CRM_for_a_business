@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Plus, Download, Package } from "lucide-react";
 import PageLayout from "../PageLayout";
 import DataTable from "../DataTable";
+import { PurchaseOrderForm, MaterialsReceivedForm, PurchaseInvoiceForm } from "../forms/PurchaseForms";
 
 // Materials Received Page
 export function MaterialsReceivedPage() {
+  const [showForm, setShowForm] = useState(false);
   const columns = [
     { key: "receiptNo", label: "Receipt No." },
     { key: "supplierName", label: "Supplier" },
@@ -27,20 +30,29 @@ export function MaterialsReceivedPage() {
   ];
 
   return (
-    <PageLayout
-      title="Materials Received"
-      description="Track and record materials received from suppliers"
-      actions={{
-        primary: { label: "Record Receipt", onClick: () => {}, icon: <Package className="h-4 w-4 mr-2" /> }
-      }}
-    >
-      <DataTable columns={columns} data={data} />
-    </PageLayout>
+    <>
+      <PageLayout
+        title="Materials Received"
+        description="Track and record materials received from suppliers"
+        actions={{
+          primary: { label: "Record Receipt", onClick: () => setShowForm(true), icon: <Package className="h-4 w-4 mr-2" /> }
+        }}
+      >
+        <DataTable columns={columns} data={data} />
+      </PageLayout>
+
+      <MaterialsReceivedForm
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        onSuccess={() => alert("Materials receipt recorded successfully!")}
+      />
+    </>
   );
 }
 
 // Purchase Order Page
 export function PurchaseOrderPage() {
+  const [showForm, setShowForm] = useState(false);
   const columns = [
     { key: "orderNo", label: "PO No." },
     { key: "supplierName", label: "Supplier" },
@@ -64,20 +76,29 @@ export function PurchaseOrderPage() {
   ];
 
   return (
-    <PageLayout
-      title="Purchase Orders"
-      description="Create and manage purchase orders to suppliers"
-      actions={{
-        primary: { label: "New Purchase Order", onClick: () => {}, icon: <Plus className="h-4 w-4 mr-2" /> }
-      }}
-    >
-      <DataTable columns={columns} data={data} />
-    </PageLayout>
+    <>
+      <PageLayout
+        title="Purchase Orders"
+        description="Create and manage purchase orders to suppliers"
+        actions={{
+          primary: { label: "New Purchase Order", onClick: () => setShowForm(true), icon: <Plus className="h-4 w-4 mr-2" /> }
+        }}
+      >
+        <DataTable columns={columns} data={data} />
+      </PageLayout>
+
+      <PurchaseOrderForm
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        onSuccess={() => alert("Purchase Order created successfully!")}
+      />
+    </>
   );
 }
 
 // Purchase Invoice Page
 export function PurchaseInvoicePage() {
+  const [showForm, setShowForm] = useState(false);
   const columns = [
     { key: "invoiceNo", label: "Invoice No." },
     { key: "supplierName", label: "Supplier" },
@@ -100,15 +121,23 @@ export function PurchaseInvoicePage() {
   ];
 
   return (
-    <PageLayout
-      title="Purchase Invoices"
-      description="Manage supplier invoices and track payments"
-      actions={{
-        primary: { label: "New Invoice", onClick: () => {}, icon: <Plus className="h-4 w-4 mr-2" /> }
-      }}
-    >
-      <DataTable columns={columns} data={data} />
-    </PageLayout>
+    <>
+      <PageLayout
+        title="Purchase Invoices"
+        description="Manage supplier invoices and track payments"
+        actions={{
+          primary: { label: "New Invoice", onClick: () => setShowForm(true), icon: <Plus className="h-4 w-4 mr-2" /> }
+        }}
+      >
+        <DataTable columns={columns} data={data} />
+      </PageLayout>
+
+      <PurchaseInvoiceForm
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        onSuccess={() => alert("Purchase Invoice recorded successfully!")}
+      />
+    </>
   );
 }
 
