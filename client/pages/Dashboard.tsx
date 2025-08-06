@@ -13,30 +13,51 @@ interface User {
   email: string;
 }
 
-const menuItems = [
-  { id: "dashboard", label: "Dashboard", path: "/dashboard" },
-  { id: "primary", label: "Primary", path: "/dashboard/primary" },
-  { id: "enquiries", label: "Enquiries", path: "/dashboard/enquiries" },
-  { id: "quotations", label: "Quotations", path: "/dashboard/quotations" },
-  { id: "sales", label: "Sales", path: "/dashboard/sales" },
-  { id: "purchase", label: "Purchase", path: "/dashboard/purchase" },
-  { id: "journal", label: "Journal", path: "/dashboard/journal" },
-  { id: "reports", label: "Reports", path: "/dashboard/reports" },
-  { id: "sales-ledger", label: "Sales Ledger", path: "/dashboard/sales-ledger" },
-  { id: "purchase-ledger", label: "Purchase Ledger", path: "/dashboard/purchase-ledger" },
-  { id: "management", label: "Management", path: "/dashboard/management" },
-  { id: "banks", label: "Banks", path: "/dashboard/banks" },
-  { id: "contra-entry", label: "Contra Entry", path: "/dashboard/contra-entry" },
-  { id: "products", label: "Products", path: "/dashboard/products" },
-  { id: "assemblies", label: "Assemblies", path: "/dashboard/assemblies" },
-  { id: "adjustments", label: "Adjustments", path: "/dashboard/adjustments" },
-  { id: "clients", label: "Clients", path: "/dashboard/clients" },
-  { id: "suppliers", label: "Suppliers", path: "/dashboard/suppliers" },
-  { id: "users", label: "Users", path: "/dashboard/users" },
-  { id: "extras", label: "Extras", path: "/dashboard/extras" },
-  { id: "estimate-approvals", label: "Estimate/Approvals", path: "/dashboard/estimate-approvals" },
-  { id: "secondary-purchase", label: "Secondary Purchase", path: "/dashboard/secondary-purchase" },
-  { id: "estimate-approvals-items", label: "Estimate/Approvals Items", path: "/dashboard/estimate-approvals-items" }
+const menuSections = [
+  {
+    heading: "Dashboard",
+    items: [
+      { id: "dashboard", label: "Dashboard", path: "/dashboard" }
+    ]
+  },
+  {
+    heading: "Primary",
+    items: [
+      { id: "enquiries", label: "Enquiries", path: "/dashboard/enquiries" },
+      { id: "quotations", label: "Quotations", path: "/dashboard/quotations" },
+      { id: "sales", label: "Sales", path: "/dashboard/sales" },
+      { id: "purchase", label: "Purchase", path: "/dashboard/purchase" },
+      { id: "journal", label: "Journal", path: "/dashboard/journal" }
+    ]
+  },
+  {
+    heading: "Reports",
+    items: [
+      { id: "sales-ledger", label: "Sales Ledger", path: "/dashboard/sales-ledger" },
+      { id: "purchase-ledger", label: "Purchase Ledger", path: "/dashboard/purchase-ledger" }
+    ]
+  },
+  {
+    heading: "Management",
+    items: [
+      { id: "banks", label: "Banks", path: "/dashboard/banks" },
+      { id: "contra-entry", label: "Contra Entry", path: "/dashboard/contra-entry" },
+      { id: "products", label: "Products", path: "/dashboard/products" },
+      { id: "assemblies", label: "Assemblies", path: "/dashboard/assemblies" },
+      { id: "adjustments", label: "Adjustments", path: "/dashboard/adjustments" },
+      { id: "clients", label: "Clients", path: "/dashboard/clients" },
+      { id: "suppliers", label: "Suppliers", path: "/dashboard/suppliers" },
+      { id: "users", label: "Users", path: "/dashboard/users" }
+    ]
+  },
+  {
+    heading: "Extras",
+    items: [
+      { id: "estimate-approvals", label: "Estimate/Approvals", path: "/dashboard/estimate-approvals" },
+      { id: "secondary-purchase", label: "Secondary Purchase", path: "/dashboard/secondary-purchase" },
+      { id: "estimate-approvals-items", label: "Estimate/Approvals Items", path: "/dashboard/estimate-approvals-items" }
+    ]
+  }
 ];
 
 export default function Dashboard() {
