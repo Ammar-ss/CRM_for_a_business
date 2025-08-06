@@ -104,6 +104,7 @@ export default function Dashboard() {
   const [showSupplierForm, setShowSupplierForm] = useState(false);
   const [showCalculator, setShowCalculator] = useState(false);
   const [activeTab, setActiveTab] = useState("products");
+  const [expandedMenus, setExpandedMenus] = useState<string[]>([]);
 
   useEffect(() => {
     // Check authentication
@@ -129,9 +130,17 @@ export default function Dashboard() {
     navigate("/");
   };
 
-  const handleMenuClick = (itemId: string) => {
-    setActiveSection(itemId);
-    setSidebarOpen(false);
+  const handleMenuClick = (itemId: string, hasSubmenu?: boolean) => {
+    if (hasSubmenu) {
+      setExpandedMenus(prev =>
+        prev.includes(itemId)
+          ? prev.filter(id => id !== itemId)
+          : [...prev, itemId]
+      );
+    } else {
+      setActiveSection(itemId);
+      setSidebarOpen(false);
+    }
   };
 
   if (!user) {
