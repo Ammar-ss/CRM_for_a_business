@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { LogOut, Menu, X, ChevronRight } from "lucide-react";
 import DashboardHeader from "../components/DashboardHeader";
 import ProductForm from "../components/ProductForm";
+import ClientForm from "../components/ClientForm";
+import SupplierForm from "../components/SupplierForm";
 import Calculator from "../components/Calculator";
 
 interface User {
@@ -43,6 +45,8 @@ export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("dashboard");
   const [showProductForm, setShowProductForm] = useState(false);
+  const [showClientForm, setShowClientForm] = useState(false);
+  const [showSupplierForm, setShowSupplierForm] = useState(false);
   const [showCalculator, setShowCalculator] = useState(false);
   const [activeTab, setActiveTab] = useState("products");
 
@@ -159,8 +163,8 @@ export default function Dashboard() {
           activeTab={activeTab}
           onTabChange={setActiveTab}
           onShowProductForm={() => setShowProductForm(true)}
-          onShowClientForm={() => alert("Client form - Coming Soon")}
-          onShowSupplierForm={() => alert("Supplier form - Coming Soon")}
+          onShowClientForm={() => setShowClientForm(true)}
+          onShowSupplierForm={() => setShowSupplierForm(true)}
           onShowCalculator={() => setShowCalculator(true)}
           onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
         />
@@ -201,6 +205,24 @@ export default function Dashboard() {
         onSuccess={() => {
           alert("Product created successfully!");
           setShowProductForm(false);
+        }}
+      />
+
+      <ClientForm
+        isOpen={showClientForm}
+        onClose={() => setShowClientForm(false)}
+        onSuccess={() => {
+          alert("Client created successfully!");
+          setShowClientForm(false);
+        }}
+      />
+
+      <SupplierForm
+        isOpen={showSupplierForm}
+        onClose={() => setShowSupplierForm(false)}
+        onSuccess={() => {
+          alert("Supplier created successfully!");
+          setShowSupplierForm(false);
         }}
       />
 
