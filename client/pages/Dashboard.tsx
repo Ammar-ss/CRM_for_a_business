@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { LogOut, Menu, X, ChevronRight } from "lucide-react";
+import { LogOut, Menu, X, ChevronRight, ChevronDown } from "lucide-react";
 import DashboardHeader from "../components/DashboardHeader";
 import ProductForm from "../components/ProductForm";
 import ClientForm from "../components/ClientForm";
@@ -197,17 +197,49 @@ export default function Dashboard() {
                 <ul className="mt-2 space-y-1">
                   {section.items.map((item) => (
                     <li key={item.id}>
-                      <button
-                        onClick={() => handleMenuClick(item.id)}
-                        className={`w-full flex items-center justify-between px-4 py-2 text-left text-sm rounded-lg transition-colors ${
-                          activeSection === item.id
-                            ? "bg-blue-50 text-blue-700 border-r-2 border-blue-600"
-                            : "text-gray-700 hover:bg-gray-50"
-                        }`}
-                      >
-                        <span>{item.label}</span>
-                        <ChevronRight size={16} className="text-gray-400" />
-                      </button>
+                      <div>
+                        <button
+                          onClick={() => handleMenuClick(item.id, item.hasSubmenu)}
+                          className={`w-full flex items-center justify-between px-4 py-2 text-left text-sm rounded-lg transition-colors ${
+                            activeSection === item.id && !item.hasSubmenu
+                              ? "bg-blue-50 text-blue-700 border-r-2 border-blue-600"
+                              : "text-gray-700 hover:bg-gray-50"
+                          }`}
+                        >
+                          <span>{item.label}</span>
+                          {item.hasSubmenu ? (
+                            <ChevronDown
+                              size={16}
+                              className={`text-gray-400 transition-transform ${
+                                expandedMenus.includes(item.id) ? 'rotate-180' : ''
+                              }`}
+                            />
+                          ) : (
+                            <ChevronRight size={16} className="text-gray-400" />
+                          )}
+                        </button>
+
+                        {/* Submenu */}
+                        {item.hasSubmenu && expandedMenus.includes(item.id) && (
+                          <ul className="mt-1 ml-4 space-y-1">
+                            {item.submenu?.map((subItem) => (
+                              <li key={subItem.id}>
+                                <button
+                                  onClick={() => handleMenuClick(subItem.id)}
+                                  className={`w-full flex items-center justify-between px-4 py-2 text-left text-sm rounded-lg transition-colors ${
+                                    activeSection === subItem.id
+                                      ? "bg-blue-50 text-blue-700 border-r-2 border-blue-600"
+                                      : "text-gray-600 hover:bg-gray-50"
+                                  }`}
+                                >
+                                  <span className="text-xs">{subItem.label}</span>
+                                  <ChevronRight size={14} className="text-gray-400" />
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
                     </li>
                   ))}
                 </ul>
