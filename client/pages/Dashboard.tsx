@@ -6,6 +6,10 @@ import ProductForm from "../components/ProductForm";
 import ClientForm from "../components/ClientForm";
 import SupplierForm from "../components/SupplierForm";
 import Calculator from "../components/Calculator";
+import DashboardOverview from "../components/pages/DashboardOverview";
+import { SalesOrderPage, ProformaInvoicePage, SalesInvoicePage, ReceiptPage, PaymentFollowupPage, CreditNotePage } from "../components/pages/SalesPages";
+import { MaterialsReceivedPage, PurchaseOrderPage, PurchaseInvoicePage, PaymentsPage, DebitNotePage } from "../components/pages/PurchasePages";
+import { EnquiriesPage, QuotationsPage, ROPPage, JournalPage, BanksPage, UsersPage, GenericPage } from "../components/pages/OtherPages";
 
 interface User {
   id: string;
@@ -140,6 +144,97 @@ export default function Dashboard() {
     } else {
       setActiveSection(itemId);
       setSidebarOpen(false);
+    }
+  };
+
+  const renderPageContent = () => {
+    switch (activeSection) {
+      case "dashboard":
+        return <DashboardOverview />;
+
+      // Primary Section
+      case "enquiries":
+        return <EnquiriesPage />;
+      case "quotations":
+        return <QuotationsPage />;
+
+      // Sales Submenu
+      case "sales-order":
+        return <SalesOrderPage />;
+      case "proforma-invoice":
+        return <ProformaInvoicePage />;
+      case "sales-invoice":
+        return <SalesInvoicePage />;
+      case "receipt":
+        return <ReceiptPage />;
+      case "payment-followup":
+        return <PaymentFollowupPage />;
+      case "credit-note":
+        return <CreditNotePage />;
+
+      // Purchase Submenu
+      case "materials-received":
+        return <MaterialsReceivedPage />;
+      case "purchase-order":
+        return <PurchaseOrderPage />;
+      case "purchase-invoice":
+        return <PurchaseInvoicePage />;
+      case "payments":
+        return <PaymentsPage />;
+      case "debit-note":
+        return <DebitNotePage />;
+
+      case "journal":
+        return <JournalPage />;
+
+      // Reports
+      case "sales-ledger":
+        return <GenericPage title="Sales Ledger" description="Customer account statements and sales reports" />;
+      case "purchase-ledger":
+        return <GenericPage title="Purchase Ledger" description="Supplier account statements and purchase reports" />;
+
+      // Management
+      case "banks":
+        return <BanksPage />;
+      case "contra-entry":
+        return <GenericPage title="Contra Entry" description="Manage contra journal entries for fund transfers" />;
+      case "product-list":
+        return activeTab === "products" ? (
+          <div className="max-w-7xl mx-auto">
+            <div className="bg-white rounded-lg shadow-sm border p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Products Management</h3>
+              <p className="text-gray-600 mb-6">
+                Manage your product inventory, categories, and pricing. Click "Add Product" to create new products.
+              </p>
+              <div className="text-center py-8">
+                <p className="text-gray-500">Product list will be displayed here with existing products</p>
+              </div>
+            </div>
+          </div>
+        ) : <GenericPage title="Products" description="Manage product inventory and information" />;
+      case "rop":
+        return <ROPPage />;
+      case "assemblies":
+        return <GenericPage title="Assemblies" description="Manage product assemblies and bill of materials" />;
+      case "adjustments":
+        return <GenericPage title="Adjustments" description="Record inventory adjustments and stock corrections" />;
+      case "clients":
+        return <GenericPage title="Clients" description="Manage customer information and relationships" />;
+      case "suppliers":
+        return <GenericPage title="Suppliers" description="Manage supplier information and relationships" />;
+      case "users":
+        return <UsersPage />;
+
+      // Extras
+      case "estimate-approvals":
+        return <GenericPage title="Estimate/Approvals" description="Manage estimates and approval workflows" />;
+      case "secondary-purchase":
+        return <GenericPage title="Secondary Purchase" description="Handle secondary purchase transactions" />;
+      case "estimate-approvals-items":
+        return <GenericPage title="Estimate/Approvals Items" description="Manage items in estimates and approvals" />;
+
+      default:
+        return <DashboardOverview />;
     }
   };
 
@@ -279,30 +374,7 @@ export default function Dashboard() {
 
         {/* Page Content */}
         <main className="p-6">
-          <div className="max-w-7xl mx-auto">
-            {activeTab === "products" ? (
-              <div className="bg-white rounded-lg shadow-sm border">
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Products Management</h3>
-                  <p className="text-gray-600">
-                    Manage your product inventory, categories, and pricing. Click "Add Product" to create new products.
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <div className="bg-white p-8 rounded-lg shadow-sm border text-center">
-                <h2 className="text-2xl font-semibold text-gray-900 mb-4 capitalize">
-                  {activeTab}
-                </h2>
-                <p className="text-gray-600 mb-6">
-                  This section is under development. The content for this module will be implemented based on your specific business requirements.
-                </p>
-                <div className="inline-flex items-center px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">
-                  <span className="text-sm">Coming Soon</span>
-                </div>
-              </div>
-            )}
-          </div>
+          {renderPageContent()}
         </main>
       </div>
 
