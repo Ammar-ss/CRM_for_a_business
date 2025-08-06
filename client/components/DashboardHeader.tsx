@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Calendar, ChevronDown, Plus, Menu } from "lucide-react";
+import { Plus, Menu } from "lucide-react";
+import FinancialYearPicker from "./FinancialYearPicker";
 
 interface DashboardHeaderProps {
   onTabChange: (tab: string) => void;
@@ -20,7 +21,7 @@ export default function DashboardHeader({
   onToggleSidebar,
   activeTab
 }: DashboardHeaderProps) {
-  const [dateRange, setDateRange] = useState("Apr 1, 2024 - Mar 31, 2026");
+  const [selectedFinancialYear, setSelectedFinancialYear] = useState("2025-2026");
 
   const tabs = [
     { id: "products", label: "Products", onClick: () => onTabChange("products") },
@@ -105,14 +106,11 @@ export default function DashboardHeader({
           )}
         </div>
 
-        {/* Date range picker */}
-        <div className="flex items-center space-x-2 bg-white border border-gray-300 rounded-md px-3 py-2 hover:border-gray-400 transition-colors">
-          <Calendar size={16} className="text-gray-500" />
-          <button className="flex items-center space-x-2 text-sm text-gray-700">
-            <span>{dateRange}</span>
-            <ChevronDown size={16} className="text-gray-400" />
-          </button>
-        </div>
+        {/* Financial Year Picker */}
+        <FinancialYearPicker
+          selectedYear={selectedFinancialYear}
+          onYearChange={setSelectedFinancialYear}
+        />
       </div>
     </div>
   );
