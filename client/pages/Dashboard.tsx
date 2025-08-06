@@ -142,23 +142,35 @@ export default function Dashboard() {
 
         {/* Navigation Menu */}
         <nav className="flex-1 overflow-y-auto min-h-0">
-          <ul className="p-4 space-y-1">
-            {menuItems.map((item) => (
-              <li key={item.id}>
-                <button
-                  onClick={() => handleMenuClick(item.id)}
-                  className={`w-full flex items-center justify-between px-4 py-3 text-left text-sm rounded-lg transition-colors ${
-                    activeSection === item.id
-                      ? "bg-blue-50 text-blue-700 border-r-2 border-blue-600"
-                      : "text-gray-700 hover:bg-gray-50"
-                  }`}
-                >
-                  <span>{item.label}</span>
-                  <ChevronRight size={16} className="text-gray-400" />
-                </button>
-              </li>
+          <div className="p-4">
+            {menuSections.map((section, sectionIndex) => (
+              <div key={section.heading} className={sectionIndex > 0 ? "mt-6" : ""}>
+                {/* Section Heading */}
+                <h3 className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                  {section.heading}
+                </h3>
+
+                {/* Section Items */}
+                <ul className="mt-2 space-y-1">
+                  {section.items.map((item) => (
+                    <li key={item.id}>
+                      <button
+                        onClick={() => handleMenuClick(item.id)}
+                        className={`w-full flex items-center justify-between px-4 py-2 text-left text-sm rounded-lg transition-colors ${
+                          activeSection === item.id
+                            ? "bg-blue-50 text-blue-700 border-r-2 border-blue-600"
+                            : "text-gray-700 hover:bg-gray-50"
+                        }`}
+                      >
+                        <span>{item.label}</span>
+                        <ChevronRight size={16} className="text-gray-400" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </nav>
 
         {/* User Info & Logout */}
