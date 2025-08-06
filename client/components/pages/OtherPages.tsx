@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Plus, Users, AlertTriangle, Building, BookOpen } from "lucide-react";
 import PageLayout from "../PageLayout";
 import DataTable from "../DataTable";
+import { EnquiryForm, QuotationForm, JournalEntryForm, BankAccountForm, UserForm } from "../forms/OtherForms";
 
 // Enquiries Page
 export function EnquiriesPage() {
+  const [showForm, setShowForm] = useState(false);
   const columns = [
     { key: "enquiryNo", label: "Enquiry No." },
     { key: "clientName", label: "Client" },
@@ -26,20 +29,29 @@ export function EnquiriesPage() {
   ];
 
   return (
-    <PageLayout
-      title="Customer Enquiries"
-      description="Manage customer enquiries and track responses"
-      actions={{
-        primary: { label: "New Enquiry", onClick: () => {}, icon: <Plus className="h-4 w-4 mr-2" /> }
-      }}
-    >
-      <DataTable columns={columns} data={data} />
-    </PageLayout>
+    <>
+      <PageLayout
+        title="Customer Enquiries"
+        description="Manage customer enquiries and track responses"
+        actions={{
+          primary: { label: "New Enquiry", onClick: () => setShowForm(true), icon: <Plus className="h-4 w-4 mr-2" /> }
+        }}
+      >
+        <DataTable columns={columns} data={data} />
+      </PageLayout>
+
+      <EnquiryForm
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        onSuccess={() => alert("Enquiry created successfully!")}
+      />
+    </>
   );
 }
 
 // Quotations Page
 export function QuotationsPage() {
+  const [showForm, setShowForm] = useState(false);
   const columns = [
     { key: "quotationNo", label: "Quotation No." },
     { key: "clientName", label: "Client" },
@@ -63,15 +75,23 @@ export function QuotationsPage() {
   ];
 
   return (
-    <PageLayout
-      title="Quotations"
-      description="Create and manage customer quotations"
-      actions={{
-        primary: { label: "New Quotation", onClick: () => {}, icon: <Plus className="h-4 w-4 mr-2" /> }
-      }}
-    >
-      <DataTable columns={columns} data={data} />
-    </PageLayout>
+    <>
+      <PageLayout
+        title="Quotations"
+        description="Create and manage customer quotations"
+        actions={{
+          primary: { label: "New Quotation", onClick: () => setShowForm(true), icon: <Plus className="h-4 w-4 mr-2" /> }
+        }}
+      >
+        <DataTable columns={columns} data={data} />
+      </PageLayout>
+
+      <QuotationForm
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        onSuccess={() => alert("Quotation created successfully!")}
+      />
+    </>
   );
 }
 
@@ -115,6 +135,7 @@ export function ROPPage() {
 
 // Journal Page
 export function JournalPage() {
+  const [showForm, setShowForm] = useState(false);
   const columns = [
     { key: "journalNo", label: "Journal No." },
     { key: "date", label: "Date" },
@@ -129,20 +150,29 @@ export function JournalPage() {
   ];
 
   return (
-    <PageLayout
-      title="Journal Entries"
-      description="Record and manage accounting journal entries"
-      actions={{
-        primary: { label: "New Journal Entry", onClick: () => {}, icon: <Plus className="h-4 w-4 mr-2" /> }
-      }}
-    >
-      <DataTable columns={columns} data={data} />
-    </PageLayout>
+    <>
+      <PageLayout
+        title="Journal Entries"
+        description="Record and manage accounting journal entries"
+        actions={{
+          primary: { label: "New Journal Entry", onClick: () => setShowForm(true), icon: <Plus className="h-4 w-4 mr-2" /> }
+        }}
+      >
+        <DataTable columns={columns} data={data} />
+      </PageLayout>
+
+      <JournalEntryForm
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        onSuccess={() => alert("Journal Entry created successfully!")}
+      />
+    </>
   );
 }
 
 // Banks Page
 export function BanksPage() {
+  const [showForm, setShowForm] = useState(false);
   const columns = [
     { key: "accountNo", label: "Account No." },
     { key: "bankName", label: "Bank Name" },
@@ -163,20 +193,29 @@ export function BanksPage() {
   ];
 
   return (
-    <PageLayout
-      title="Bank Accounts"
-      description="Manage bank accounts and track balances"
-      actions={{
-        primary: { label: "Add Bank Account", onClick: () => {}, icon: <Plus className="h-4 w-4 mr-2" /> }
-      }}
-    >
-      <DataTable columns={columns} data={data} />
-    </PageLayout>
+    <>
+      <PageLayout
+        title="Bank Accounts"
+        description="Manage bank accounts and track balances"
+        actions={{
+          primary: { label: "Add Bank Account", onClick: () => setShowForm(true), icon: <Plus className="h-4 w-4 mr-2" /> }
+        }}
+      >
+        <DataTable columns={columns} data={data} />
+      </PageLayout>
+
+      <BankAccountForm
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        onSuccess={() => alert("Bank Account added successfully!")}
+      />
+    </>
   );
 }
 
 // Users Page
 export function UsersPage() {
+  const [showForm, setShowForm] = useState(false);
   const columns = [
     { key: "username", label: "Username" },
     { key: "email", label: "Email" },
@@ -198,15 +237,23 @@ export function UsersPage() {
   ];
 
   return (
-    <PageLayout
-      title="User Management"
-      description="Manage system users and their permissions"
-      actions={{
-        primary: { label: "Add User", onClick: () => {}, icon: <Users className="h-4 w-4 mr-2" /> }
-      }}
-    >
-      <DataTable columns={columns} data={data} />
-    </PageLayout>
+    <>
+      <PageLayout
+        title="User Management"
+        description="Manage system users and their permissions"
+        actions={{
+          primary: { label: "Add User", onClick: () => setShowForm(true), icon: <Users className="h-4 w-4 mr-2" /> }
+        }}
+      >
+        <DataTable columns={columns} data={data} />
+      </PageLayout>
+
+      <UserForm
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        onSuccess={() => alert("User created successfully!")}
+      />
+    </>
   );
 }
 
