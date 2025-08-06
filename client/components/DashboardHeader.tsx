@@ -73,7 +73,7 @@ export default function DashboardHeader({
           </button>
           <h1 className="text-xl font-semibold text-gray-900">Dashboard</h1>
 
-          {/* Add Product button - only show when on products tab */}
+          {/* Add buttons - show appropriate button based on active tab */}
           {activeTab === "products" && (
             <button
               onClick={onShowProductForm}
@@ -81,6 +81,26 @@ export default function DashboardHeader({
             >
               <Plus size={16} className="mr-2" />
               Add Product
+            </button>
+          )}
+
+          {activeTab === "client" && (
+            <button
+              onClick={onShowClientForm}
+              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors"
+            >
+              <Plus size={16} className="mr-2" />
+              Add Client
+            </button>
+          )}
+
+          {activeTab === "supplier" && (
+            <button
+              onClick={onShowSupplierForm}
+              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors"
+            >
+              <Plus size={16} className="mr-2" />
+              Add Supplier
             </button>
           )}
         </div>
