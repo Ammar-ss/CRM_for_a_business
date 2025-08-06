@@ -25,8 +25,33 @@ const menuSections = [
     items: [
       { id: "enquiries", label: "Enquiries", path: "/dashboard/enquiries" },
       { id: "quotations", label: "Quotations", path: "/dashboard/quotations" },
-      { id: "sales", label: "Sales", path: "/dashboard/sales" },
-      { id: "purchase", label: "Purchase", path: "/dashboard/purchase" },
+      {
+        id: "sales",
+        label: "Sales",
+        path: "/dashboard/sales",
+        hasSubmenu: true,
+        submenu: [
+          { id: "sales-order", label: "Sales Order", path: "/dashboard/sales/orders" },
+          { id: "proforma-invoice", label: "Proforma Invoice", path: "/dashboard/sales/proforma" },
+          { id: "sales-invoice", label: "Sales Invoice", path: "/dashboard/sales/invoice" },
+          { id: "receipt", label: "Receipt", path: "/dashboard/sales/receipt" },
+          { id: "payment-followup", label: "Payment Follow up", path: "/dashboard/sales/followup" },
+          { id: "credit-note", label: "Credit Note", path: "/dashboard/sales/credit-note" }
+        ]
+      },
+      {
+        id: "purchase",
+        label: "Purchase",
+        path: "/dashboard/purchase",
+        hasSubmenu: true,
+        submenu: [
+          { id: "materials-received", label: "Materials Received", path: "/dashboard/purchase/materials" },
+          { id: "purchase-order", label: "Purchase Order", path: "/dashboard/purchase/orders" },
+          { id: "purchase-invoice", label: "Purchase Invoice", path: "/dashboard/purchase/invoice" },
+          { id: "payments", label: "Payments", path: "/dashboard/purchase/payments" },
+          { id: "debit-note", label: "Debit Note", path: "/dashboard/purchase/debit-note" }
+        ]
+      },
       { id: "journal", label: "Journal", path: "/dashboard/journal" }
     ]
   },
@@ -42,7 +67,16 @@ const menuSections = [
     items: [
       { id: "banks", label: "Banks", path: "/dashboard/banks" },
       { id: "contra-entry", label: "Contra Entry", path: "/dashboard/contra-entry" },
-      { id: "products", label: "Products", path: "/dashboard/products" },
+      {
+        id: "products",
+        label: "Products",
+        path: "/dashboard/products",
+        hasSubmenu: true,
+        submenu: [
+          { id: "product-list", label: "Product", path: "/dashboard/products/list" },
+          { id: "rop", label: "ROP", path: "/dashboard/products/rop" }
+        ]
+      },
       { id: "assemblies", label: "Assemblies", path: "/dashboard/assemblies" },
       { id: "adjustments", label: "Adjustments", path: "/dashboard/adjustments" },
       { id: "clients", label: "Clients", path: "/dashboard/clients" },
