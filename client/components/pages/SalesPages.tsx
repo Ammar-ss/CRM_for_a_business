@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Plus, Download, FileText } from "lucide-react";
 import PageLayout from "../PageLayout";
 import DataTable from "../DataTable";
+import { SalesOrderForm, SalesInvoiceForm, ReceiptForm } from "../forms/SalesForms";
 
 // Sales Order Page
 export function SalesOrderPage() {
+  const [showForm, setShowForm] = useState(false);
   const columns = [
     { key: "orderNo", label: "Order No." },
     { key: "clientName", label: "Client" },
@@ -27,26 +30,34 @@ export function SalesOrderPage() {
   ];
 
   return (
-    <PageLayout
-      title="Sales Orders"
-      description="Manage customer sales orders and track order status"
-      actions={{
-        primary: { label: "New Sales Order", onClick: () => {}, icon: <Plus className="h-4 w-4 mr-2" /> },
-        secondary: [
-          { label: "Export", onClick: () => {}, icon: <Download className="h-4 w-4 mr-2" /> }
-        ]
-      }}
-    >
-      <DataTable 
-        columns={columns} 
-        data={data} 
+    <>
+      <PageLayout
+        title="Sales Orders"
+        description="Manage customer sales orders and track order status"
         actions={{
-          view: (row) => console.log("View:", row),
-          edit: (row) => console.log("Edit:", row),
-          delete: (row) => console.log("Delete:", row)
+          primary: { label: "New Sales Order", onClick: () => setShowForm(true), icon: <Plus className="h-4 w-4 mr-2" /> },
+          secondary: [
+            { label: "Export", onClick: () => {}, icon: <Download className="h-4 w-4 mr-2" /> }
+          ]
         }}
+      >
+        <DataTable
+          columns={columns}
+          data={data}
+          actions={{
+            view: (row) => console.log("View:", row),
+            edit: (row) => console.log("Edit:", row),
+            delete: (row) => console.log("Delete:", row)
+          }}
+        />
+      </PageLayout>
+
+      <SalesOrderForm
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        onSuccess={() => alert("Sales Order created successfully!")}
       />
-    </PageLayout>
+    </>
   );
 }
 
@@ -80,6 +91,7 @@ export function ProformaInvoicePage() {
 
 // Sales Invoice Page
 export function SalesInvoicePage() {
+  const [showForm, setShowForm] = useState(false);
   const columns = [
     { key: "invoiceNo", label: "Invoice No." },
     { key: "clientName", label: "Client" },
@@ -102,20 +114,29 @@ export function SalesInvoicePage() {
   ];
 
   return (
-    <PageLayout
-      title="Sales Invoices"
-      description="Manage sales invoices and track payments"
-      actions={{
-        primary: { label: "New Invoice", onClick: () => {}, icon: <Plus className="h-4 w-4 mr-2" /> }
-      }}
-    >
-      <DataTable columns={columns} data={data} />
-    </PageLayout>
+    <>
+      <PageLayout
+        title="Sales Invoices"
+        description="Manage sales invoices and track payments"
+        actions={{
+          primary: { label: "New Invoice", onClick: () => setShowForm(true), icon: <Plus className="h-4 w-4 mr-2" /> }
+        }}
+      >
+        <DataTable columns={columns} data={data} />
+      </PageLayout>
+
+      <SalesInvoiceForm
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        onSuccess={() => alert("Sales Invoice created successfully!")}
+      />
+    </>
   );
 }
 
 // Receipt Page
 export function ReceiptPage() {
+  const [showForm, setShowForm] = useState(false);
   const columns = [
     { key: "receiptNo", label: "Receipt No." },
     { key: "clientName", label: "Client" },
@@ -130,15 +151,23 @@ export function ReceiptPage() {
   ];
 
   return (
-    <PageLayout
-      title="Payment Receipts"
-      description="Record and manage payment receipts from customers"
-      actions={{
-        primary: { label: "New Receipt", onClick: () => {}, icon: <Plus className="h-4 w-4 mr-2" /> }
-      }}
-    >
-      <DataTable columns={columns} data={data} />
-    </PageLayout>
+    <>
+      <PageLayout
+        title="Payment Receipts"
+        description="Record and manage payment receipts from customers"
+        actions={{
+          primary: { label: "New Receipt", onClick: () => setShowForm(true), icon: <Plus className="h-4 w-4 mr-2" /> }
+        }}
+      >
+        <DataTable columns={columns} data={data} />
+      </PageLayout>
+
+      <ReceiptForm
+        isOpen={showForm}
+        onClose={() => setShowForm(false)}
+        onSuccess={() => alert("Payment Receipt recorded successfully!")}
+      />
+    </>
   );
 }
 
