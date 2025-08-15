@@ -1,6 +1,8 @@
 # CRM_for_a_business
 This repository consists of a comprehensive Customer Relationship Model (CRM) built by me using Builder.io. It consists of an operational CRM which can be used by a small-businesse in live scenario.
 
+For access, use ID = "admin" and PASSWORD = "123"
+
 Some of the concepts used in this project are :
 
 **Software Engineering** : Used the RAD model approach and built the project in accordance to the requirements of a business and prepared the necessary documents
