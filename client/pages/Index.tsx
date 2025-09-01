@@ -73,7 +73,7 @@ export default function Index() {
             <div>
               <input
                 type="text"
-                placeholder="Username"
+                placeholder="Username (DEFAULT USERNAME = admin)"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className="w-full px-0 py-3 text-gray-900 placeholder-gray-500 border-0 border-b border-gray-300 bg-transparent focus:border-blue-600 focus:outline-none focus:ring-0"
@@ -85,7 +85,7 @@ export default function Index() {
             <div>
               <input
                 type="password"
-                placeholder="Password"
+                placeholder="Password (DEFAULT PASSWORD = 123)"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-0 py-3 text-gray-900 placeholder-gray-500 border-0 border-b border-gray-300 bg-transparent focus:border-blue-600 focus:outline-none focus:ring-0"
