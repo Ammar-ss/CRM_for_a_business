@@ -54,8 +54,8 @@ export default function Index() {
           {/* Logo and Company Name */}
           <div className="mb-12 text-center">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2F54f8588728e94fb0b8646e3f37922df0%2Fd7768f3705f94b159a78994f71c5676e?format=webp&width=800"
-              alt="AMMAR Industrial Corporation Logo"
+              src={COMPANY_INFO.logo}
+              alt={`${COMPANY_INFO.name} Logo`}
               className="h-48 object-contain mx-auto"
             />
           </div>
@@ -144,8 +144,8 @@ export default function Index() {
       {/* Right side - Background with Image */}
       <div className="flex-1 bg-gradient-to-br from-blue-50 to-gray-100 relative overflow-hidden flex items-center justify-center">
         <img
-          src="https://cdn.builder.io/api/v1/image/assets%2F54f8588728e94fb0b8646e3f37922df0%2F18131d2f53ad4e7780e2c0e6abcabfe9?format=webp&width=800"
-          alt="AMMAR Industrial Equipment"
+          src={COMPANY_INFO.heroImage}
+          alt={`${COMPANY_INFO.name} Equipment`}
           className="w-full h-full object-contain"
         />
       </div>
