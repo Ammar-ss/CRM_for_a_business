@@ -1,4 +1,6 @@
-import { BarChart3, TrendingUp, Package, Users, ShoppingCart, DollarSign } from "lucide-react";
+import { BarChart3, TrendingUp, Package, Users, ShoppingCart, DollarSign, AlertTriangle, FileText, Clock, CheckCircle } from "lucide-react";
+import { formatCurrency, getRelativeTime } from "../../lib/helpers";
+import { SAMPLE_CLIENTS, SAMPLE_PRODUCTS } from "../../lib/constants";
 
 interface DashboardOverviewProps {
   onShowProductForm?: () => void;
@@ -13,19 +15,91 @@ export default function DashboardOverview({
   onShowOrderForm,
   onShowPaymentForm
 }: DashboardOverviewProps) {
+  // More realistic SME stats
   const stats = [
-    { name: "Total Sales", value: "₹2,45,680", change: "+12%", trend: "up", icon: DollarSign },
-    { name: "Total Products", value: "1,247", change: "+5%", trend: "up", icon: Package },
-    { name: "Active Clients", value: "89", change: "+8%", trend: "up", icon: Users },
-    { name: "Pending Orders", value: "23", change: "-3%", trend: "down", icon: ShoppingCart },
+    { name: "Monthly Sales", value: formatCurrency(845250), change: "+18.2%", trend: "up", icon: DollarSign },
+    { name: "Total Products", value: "156", change: "+12", trend: "up", icon: Package },
+    { name: "Active Clients", value: "42", change: "+3", trend: "up", icon: Users },
+    { name: "Pending Orders", value: "8", change: "-2", trend: "down", icon: ShoppingCart },
   ];
 
+  // More comprehensive recent activities for an SME
   const recentActivities = [
-    { id: 1, type: "Sale", description: "New sales order SO-2024-001", time: "2 hours ago", amount: "₹15,600" },
-    { id: 2, type: "Purchase", description: "Purchase order PO-2024-045 received", time: "4 hours ago", amount: "₹8,900" },
-    { id: 3, type: "Payment", description: "Payment received from Client ABC Ltd", time: "6 hours ago", amount: "₹25,000" },
-    { id: 4, type: "Product", description: "New product added - Industrial Valve XV-200", time: "1 day ago", amount: "" },
+    {
+      id: 1,
+      type: "Sale",
+      description: "Sales Order SO-2024-1247 from ABC Manufacturing Ltd for Industrial Valves",
+      time: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(), // 2 hours ago
+      amount: formatCurrency(45600),
+      client: "ABC Manufacturing Ltd"
+    },
+    {
+      id: 2,
+      type: "Payment",
+      description: "Payment received from XYZ Engineering Works via UPI",
+      time: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(), // 4 hours ago
+      amount: formatCurrency(28900),
+      client: "XYZ Engineering Works"
+    },
+    {
+      id: 3,
+      type: "Purchase",
+      description: "Purchase Order PO-2024-089 sent to Valve Tech Industries",
+      time: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(), // 6 hours ago
+      amount: formatCurrency(62400),
+      client: "Valve Tech Industries"
+    },
+    {
+      id: 4,
+      type: "Product",
+      description: "Stock updated for PVC Pipe 4 inch - 25 units added",
+      time: new Date(Date.now() - 8 * 60 * 60 * 1000).toISOString(), // 8 hours ago
+      amount: "",
+      client: ""
+    },
+    {
+      id: 5,
+      type: "Quote",
+      description: "Quotation QT-2024-456 sent to PQR Construction Co",
+      time: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
+      amount: formatCurrency(125000),
+      client: "PQR Construction Co"
+    },
+    {
+      id: 6,
+      type: "Alert",
+      description: "Low stock alert: Safety Helmets below reorder level",
+      time: new Date(Date.now() - 26 * 60 * 60 * 1000).toISOString(), // 1 day ago
+      amount: "",
+      client: ""
+    }
   ];
+
+  // Low stock alerts for SME
+  const lowStockItems = [
+    { name: "Safety Helmet with Chin Strap", currentStock: 12, minStock: 50, urgency: "high" },
+    { name: "Industrial Ball Valve 2 inch", currentStock: 8, minStock: 15, urgency: "medium" },
+    { name: "Electric Centrifugal Pump 5HP", currentStock: 2, minStock: 5, urgency: "high" }
+  ];
+
+  // Pending follow-ups
+  const pendingFollowups = [
+    { client: "ABC Manufacturing Ltd", amount: formatCurrency(125000), daysOverdue: 15, priority: "high" },
+    { client: "XYZ Engineering Works", amount: formatCurrency(75000), daysOverdue: 8, priority: "medium" },
+    { client: "DEF Industries", amount: formatCurrency(42000), daysOverdue: 3, priority: "low" }
+  ];
+
+  const getActivityIcon = (type: string) => {
+    switch (type) {
+      case "Sale": return <ShoppingCart className="h-5 w-5 text-green-600" />;
+      case "Payment": return <DollarSign className="h-5 w-5 text-blue-600" />;
+      case "Purchase": return <Package className="h-5 w-5 text-purple-600" />;
+      case "Product": return <Package className="h-5 w-5 text-orange-600" />;
+      case "Quote": return <FileText className="h-5 w-5 text-indigo-600" />;
+      case "Alert": return <AlertTriangle className="h-5 w-5 text-red-600" />;
+      default: return <Clock className="h-5 w-5 text-gray-600" />;
+    }
+  };
 
   return (
     <div className="space-y-6">
