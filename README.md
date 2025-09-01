@@ -13,7 +13,7 @@ A comprehensive Enterprise Resource Planning (ERP) system designed specifically 
 - **Business Insights**: Monthly trends, top products, and client analytics
 - **Inventory Alerts**: Low stock notifications and reorder point management
 
-### ���� Sales Management
+### 💼 Sales Management
 
 - **Sales Orders**: Create and track customer orders
 - **Quotations**: Generate professional quotes with auto-calculations
@@ -296,4 +296,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ for Small & Medium Enterprises**
 
-_Streamline your business operations with AMMAR Industrial ERP - where efficiency meets innovation._
+*Streamline your business operations with AMMAR Industrial ERP - where efficiency meets innovation.*
