@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginRequest, AuthResponse } from "@shared/auth";
+import { COMPANY_INFO } from "../lib/constants";
 
 export default function Index() {
   const navigate = useNavigate();
