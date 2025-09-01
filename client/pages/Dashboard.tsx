@@ -12,6 +12,7 @@ import DashboardOverview from "../components/pages/DashboardOverview";
 import { SalesOrderPage, ProformaInvoicePage, SalesInvoicePage, ReceiptPage, PaymentFollowupPage, CreditNotePage } from "../components/pages/SalesPages";
 import { MaterialsReceivedPage, PurchaseOrderPage, PurchaseInvoicePage, PaymentsPage, DebitNotePage } from "../components/pages/PurchasePages";
 import { EnquiriesPage, QuotationsPage, ROPPage, JournalPage, BanksPage, UsersPage, GenericPage } from "../components/pages/OtherPages";
+import { EstimateApprovalsPage, SecondaryPurchasePage, EstimateApprovalsItemsPage } from "../components/pages/ExtraPages";
 import { MENU_SECTIONS, COMPANY_INFO } from "../lib/constants";
 import { User } from "../lib/types";
 
