@@ -7,38 +7,46 @@ interface PaymentFormProps {
   onSuccess: () => void;
 }
 
-export default function PaymentForm({ isOpen, onClose, onSuccess }: PaymentFormProps) {
+export default function PaymentForm({
+  isOpen,
+  onClose,
+  onSuccess,
+}: PaymentFormProps) {
   const [formData, setFormData] = useState({
     paymentNumber: "",
     paymentType: "received", // received or paid
     clientName: "",
     amount: 0,
-    paymentDate: new Date().toISOString().split('T')[0],
+    paymentDate: new Date().toISOString().split("T")[0],
     paymentMethod: "cash",
     referenceNumber: "",
     description: "",
     invoiceNumber: "",
-    status: "completed"
+    status: "completed",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: name === 'amount' ? parseFloat(value) || 0 : value
+      [name]: name === "amount" ? parseFloat(value) || 0 : value,
     }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Generate payment number if not provided
     const paymentNumber = formData.paymentNumber || `PAY-${Date.now()}`;
-    
+
     const paymentData = {
       ...formData,
       paymentNumber,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     };
 
     console.log("Payment Data:", paymentData);
@@ -51,7 +59,9 @@ export default function PaymentForm({ isOpen, onClose, onSuccess }: PaymentFormP
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between p-6 border-b">
-          <h2 className="text-xl font-semibold text-gray-900">Record Payment</h2>
+          <h2 className="text-xl font-semibold text-gray-900">
+            Record Payment
+          </h2>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -94,7 +104,10 @@ export default function PaymentForm({ isOpen, onClose, onSuccess }: PaymentFormP
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                {formData.paymentType === 'received' ? 'Client Name' : 'Supplier Name'} *
+                {formData.paymentType === "received"
+                  ? "Client Name"
+                  : "Supplier Name"}{" "}
+                *
               </label>
               <input
                 type="text"
@@ -102,7 +115,11 @@ export default function PaymentForm({ isOpen, onClose, onSuccess }: PaymentFormP
                 value={formData.clientName}
                 onChange={handleInputChange}
                 required
-                placeholder={formData.paymentType === 'received' ? 'Enter client name' : 'Enter supplier name'}
+                placeholder={
+                  formData.paymentType === "received"
+                    ? "Enter client name"
+                    : "Enter supplier name"
+                }
                 className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
@@ -220,29 +237,41 @@ export default function PaymentForm({ isOpen, onClose, onSuccess }: PaymentFormP
 
           {/* Payment Summary */}
           <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Payment Summary</h3>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">
+              Payment Summary
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
               <div>
                 <span className="font-medium text-gray-700">Type:</span>
-                <span className={`ml-2 px-2 py-1 rounded text-xs font-medium ${
-                  formData.paymentType === 'received' 
-                    ? 'bg-green-100 text-green-800' 
-                    : 'bg-red-100 text-red-800'
-                }`}>
-                  {formData.paymentType === 'received' ? 'Money In' : 'Money Out'}
+                <span
+                  className={`ml-2 px-2 py-1 rounded text-xs font-medium ${
+                    formData.paymentType === "received"
+                      ? "bg-green-100 text-green-800"
+                      : "bg-red-100 text-red-800"
+                  }`}
+                >
+                  {formData.paymentType === "received"
+                    ? "Money In"
+                    : "Money Out"}
                 </span>
               </div>
               <div>
                 <span className="font-medium text-gray-700">Amount:</span>
-                <span className={`ml-2 text-lg font-bold ${
-                  formData.paymentType === 'received' ? 'text-green-600' : 'text-red-600'
-                }`}>
+                <span
+                  className={`ml-2 text-lg font-bold ${
+                    formData.paymentType === "received"
+                      ? "text-green-600"
+                      : "text-red-600"
+                  }`}
+                >
                   ₹{formData.amount.toFixed(2)}
                 </span>
               </div>
               <div>
                 <span className="font-medium text-gray-700">Method:</span>
-                <span className="ml-2 capitalize">{formData.paymentMethod.replace('_', ' ')}</span>
+                <span className="ml-2 capitalize">
+                  {formData.paymentMethod.replace("_", " ")}
+                </span>
               </div>
               <div>
                 <span className="font-medium text-gray-700">Date:</span>

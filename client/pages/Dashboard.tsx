@@ -9,10 +9,35 @@ import OrderForm from "../components/OrderForm";
 import PaymentForm from "../components/PaymentForm";
 import Calculator from "../components/Calculator";
 import DashboardOverview from "../components/pages/DashboardOverview";
-import { SalesOrderPage, ProformaInvoicePage, SalesInvoicePage, ReceiptPage, PaymentFollowupPage, CreditNotePage } from "../components/pages/SalesPages";
-import { MaterialsReceivedPage, PurchaseOrderPage, PurchaseInvoicePage, PaymentsPage, DebitNotePage } from "../components/pages/PurchasePages";
-import { EnquiriesPage, QuotationsPage, ROPPage, JournalPage, BanksPage, UsersPage, GenericPage } from "../components/pages/OtherPages";
-import { EstimateApprovalsPage, SecondaryPurchasePage, EstimateApprovalsItemsPage } from "../components/pages/ExtraPages";
+import {
+  SalesOrderPage,
+  ProformaInvoicePage,
+  SalesInvoicePage,
+  ReceiptPage,
+  PaymentFollowupPage,
+  CreditNotePage,
+} from "../components/pages/SalesPages";
+import {
+  MaterialsReceivedPage,
+  PurchaseOrderPage,
+  PurchaseInvoicePage,
+  PaymentsPage,
+  DebitNotePage,
+} from "../components/pages/PurchasePages";
+import {
+  EnquiriesPage,
+  QuotationsPage,
+  ROPPage,
+  JournalPage,
+  BanksPage,
+  UsersPage,
+  GenericPage,
+} from "../components/pages/OtherPages";
+import {
+  EstimateApprovalsPage,
+  SecondaryPurchasePage,
+  EstimateApprovalsItemsPage,
+} from "../components/pages/ExtraPages";
 import { MENU_SECTIONS, COMPANY_INFO } from "../lib/constants";
 import { User } from "../lib/types";
 
@@ -56,10 +81,10 @@ export default function Dashboard() {
 
   const handleMenuClick = (itemId: string, hasSubmenu?: boolean) => {
     if (hasSubmenu) {
-      setExpandedMenus(prev =>
+      setExpandedMenus((prev) =>
         prev.includes(itemId)
-          ? prev.filter(id => id !== itemId)
-          : [...prev, itemId]
+          ? prev.filter((id) => id !== itemId)
+          : [...prev, itemId],
       );
     } else {
       setActiveSection(itemId);
@@ -116,39 +141,84 @@ export default function Dashboard() {
 
       // Reports
       case "sales-ledger":
-        return <GenericPage title="Sales Ledger" description="Customer account statements and sales reports" />;
+        return (
+          <GenericPage
+            title="Sales Ledger"
+            description="Customer account statements and sales reports"
+          />
+        );
       case "purchase-ledger":
-        return <GenericPage title="Purchase Ledger" description="Supplier account statements and purchase reports" />;
+        return (
+          <GenericPage
+            title="Purchase Ledger"
+            description="Supplier account statements and purchase reports"
+          />
+        );
 
       // Management
       case "banks":
         return <BanksPage />;
       case "contra-entry":
-        return <GenericPage title="Contra Entry" description="Manage contra journal entries for fund transfers" />;
+        return (
+          <GenericPage
+            title="Contra Entry"
+            description="Manage contra journal entries for fund transfers"
+          />
+        );
       case "product-list":
         return activeTab === "products" ? (
           <div className="max-w-7xl mx-auto">
             <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Products Management</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                Products Management
+              </h3>
               <p className="text-gray-600 mb-6">
-                Manage your product inventory, categories, and pricing. Click "Add Product" to create new products.
+                Manage your product inventory, categories, and pricing. Click
+                "Add Product" to create new products.
               </p>
               <div className="text-center py-8">
-                <p className="text-gray-500">Product list will be displayed here with existing products</p>
+                <p className="text-gray-500">
+                  Product list will be displayed here with existing products
+                </p>
               </div>
             </div>
           </div>
-        ) : <GenericPage title="Products" description="Manage product inventory and information" />;
+        ) : (
+          <GenericPage
+            title="Products"
+            description="Manage product inventory and information"
+          />
+        );
       case "rop":
         return <ROPPage />;
       case "assemblies":
-        return <GenericPage title="Assemblies" description="Manage product assemblies and bill of materials" />;
+        return (
+          <GenericPage
+            title="Assemblies"
+            description="Manage product assemblies and bill of materials"
+          />
+        );
       case "adjustments":
-        return <GenericPage title="Adjustments" description="Record inventory adjustments and stock corrections" />;
+        return (
+          <GenericPage
+            title="Adjustments"
+            description="Record inventory adjustments and stock corrections"
+          />
+        );
       case "clients":
-        return <GenericPage title="Clients" description="Manage customer information and relationships" />;
+        return (
+          <GenericPage
+            title="Clients"
+            description="Manage customer information and relationships"
+          />
+        );
       case "suppliers":
-        return <GenericPage title="Suppliers" description="Manage supplier information and relationships" />;
+        return (
+          <GenericPage
+            title="Suppliers"
+            description="Manage supplier information and relationships"
+          />
+        );
       case "users":
         return <UsersPage />;
 
@@ -187,9 +257,11 @@ export default function Dashboard() {
       )}
 
       {/* Sidebar */}
-      <div className={`fixed left-0 top-0 h-screen w-64 bg-white shadow-lg transform transition-transform duration-200 ease-in-out z-50 flex flex-col ${
-        sidebarOpen ? "translate-x-0" : "-translate-x-full"
-      }`}>
+      <div
+        className={`fixed left-0 top-0 h-screen w-64 bg-white shadow-lg transform transition-transform duration-200 ease-in-out z-50 flex flex-col ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
         {/* Logo Header */}
         <div className="flex items-center justify-between p-6 border-b">
           <img
@@ -209,7 +281,10 @@ export default function Dashboard() {
         <nav className="flex-1 overflow-y-auto min-h-0">
           <div className="p-4">
             {MENU_SECTIONS.map((section, sectionIndex) => (
-              <div key={section.heading} className={sectionIndex > 0 ? "mt-6" : ""}>
+              <div
+                key={section.heading}
+                className={sectionIndex > 0 ? "mt-6" : ""}
+              >
                 {/* Section Heading */}
                 <h3 className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">
                   {section.heading}
@@ -221,7 +296,9 @@ export default function Dashboard() {
                     <li key={item.id}>
                       <div>
                         <button
-                          onClick={() => handleMenuClick(item.id, item.hasSubmenu)}
+                          onClick={() =>
+                            handleMenuClick(item.id, item.hasSubmenu)
+                          }
                           className={`w-full flex items-center justify-between px-4 py-2 text-left text-sm rounded-lg transition-colors ${
                             activeSection === item.id && !item.hasSubmenu
                               ? "bg-blue-50 text-blue-700 border-r-2 border-blue-600"
@@ -233,7 +310,9 @@ export default function Dashboard() {
                             <ChevronDown
                               size={16}
                               className={`text-gray-400 transition-transform ${
-                                expandedMenus.includes(item.id) ? 'rotate-180' : ''
+                                expandedMenus.includes(item.id)
+                                  ? "rotate-180"
+                                  : ""
                               }`}
                             />
                           ) : (
@@ -254,8 +333,13 @@ export default function Dashboard() {
                                       : "text-gray-600 hover:bg-gray-50"
                                   }`}
                                 >
-                                  <span className="text-xs">{subItem.label}</span>
-                                  <ChevronRight size={14} className="text-gray-400" />
+                                  <span className="text-xs">
+                                    {subItem.label}
+                                  </span>
+                                  <ChevronRight
+                                    size={14}
+                                    className="text-gray-400"
+                                  />
                                 </button>
                               </li>
                             ))}
@@ -300,9 +384,7 @@ export default function Dashboard() {
         />
 
         {/* Page Content */}
-        <main className="p-6">
-          {renderPageContent()}
-        </main>
+        <main className="p-6">{renderPageContent()}</main>
       </div>
 
       {/* Modals */}

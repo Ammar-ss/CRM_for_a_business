@@ -5,23 +5,29 @@ This document provides detailed information about all features available in the 
 ## 🏠 Dashboard & Overview
 
 ### Main Dashboard
+
 The central hub displaying key business metrics and quick access to important functions.
 
 #### Key Metrics
+
 - **Monthly Sales**: Current month sales with percentage change
 - **Total Products**: Product count with recent additions
 - **Active Clients**: Number of active customer accounts
 - **Pending Orders**: Orders awaiting processing
 
 #### Quick Actions Widget
+
 One-click access to frequently used functions:
+
 - **Add Product**: Launch product creation form
 - **Add Client**: Create new customer account
 - **New Order**: Start sales order process
 - **Add Payment**: Record payment transactions
 
 #### Recent Activities Feed
+
 Real-time activity stream showing:
+
 - Sales orders created
 - Payments received/made
 - Purchase orders processed
@@ -29,11 +35,13 @@ Real-time activity stream showing:
 - System alerts and notifications
 
 #### Inventory Alerts
+
 - Low stock warnings with urgency levels
 - Reorder point notifications
 - Stock out alerts
 
 #### Business Insights
+
 - Monthly sales targets vs achievements
 - Top-selling products analysis
 - Customer payment follow-ups
@@ -42,9 +50,11 @@ Real-time activity stream showing:
 ## 💼 Sales Management
 
 ### Sales Orders (SO)
+
 Complete sales order lifecycle management.
 
 #### Features:
+
 - **Order Creation**: Multi-product orders with automatic calculations
 - **Client Selection**: Integration with customer database
 - **Pricing Management**: Unit pricing with total calculations
@@ -53,6 +63,7 @@ Complete sales order lifecycle management.
 - **Order Notes**: Special instructions and remarks
 
 #### Order Workflow:
+
 1. Create new sales order
 2. Select client and contact information
 3. Add products with quantities and pricing
@@ -61,9 +72,11 @@ Complete sales order lifecycle management.
 6. Track order status through completion
 
 ### Quotations
+
 Professional quotation generation with approval workflows.
 
 #### Features:
+
 - **Quote Creation**: Detailed product quotations
 - **Validity Period**: Quote expiration management
 - **Auto-calculations**: Subtotal, discounts, taxes
@@ -71,9 +84,11 @@ Professional quotation generation with approval workflows.
 - **Client Communication**: Quote delivery tracking
 
 ### Invoicing
+
 Automated invoice generation linked to sales orders.
 
 #### Features:
+
 - **Invoice Generation**: Auto-creation from sales orders
 - **GST Calculations**: 18% GST calculation and breakdown
 - **Payment Status**: Paid, Partially Paid, Pending
@@ -81,9 +96,11 @@ Automated invoice generation linked to sales orders.
 - **Professional Layout**: Company branding and formatting
 
 ### Receipts & Payments
+
 Comprehensive payment tracking and management.
 
 #### Features:
+
 - **Payment Recording**: Both incoming and outgoing payments
 - **Multiple Payment Methods**: Cash, UPI, Bank Transfer, Cheque, Card
 - **Reference Tracking**: Transaction IDs and reference numbers
@@ -91,18 +108,22 @@ Comprehensive payment tracking and management.
 - **Payment Status**: Completed, Pending, Failed, Cancelled
 
 ### Payment Follow-ups
+
 Systematic approach to collecting outstanding payments.
 
 #### Features:
+
 - **Aging Reports**: Days overdue tracking
 - **Priority Levels**: High, Medium, Low priority assignments
 - **Client Communication**: Follow-up reminders and notifications
 - **Outstanding Balances**: Amount-wise follow-up tracking
 
 ### Credit Notes
+
 Handle returns, refunds, and credit adjustments.
 
 #### Features:
+
 - **Credit Creation**: Linked to original sales transactions
 - **Reason Codes**: Categorized credit reasons
 - **Amount Calculations**: Full or partial credit amounts
@@ -111,9 +132,11 @@ Handle returns, refunds, and credit adjustments.
 ## 🛒 Purchase Management
 
 ### Purchase Orders (PO)
+
 Streamlined supplier order management system.
 
 #### Features:
+
 - **Supplier Selection**: Integrated supplier database
 - **Product Ordering**: Multi-item purchase orders
 - **Delivery Scheduling**: Expected delivery tracking
@@ -122,9 +145,11 @@ Streamlined supplier order management system.
 - **Quality Notes**: Special requirements and instructions
 
 ### Materials Received
+
 Track incoming inventory and quality control.
 
 #### Features:
+
 - **Receipt Recording**: Match against purchase orders
 - **Quantity Verification**: Ordered vs received quantities
 - **Quality Inspection**: Condition assessment and remarks
@@ -133,9 +158,11 @@ Track incoming inventory and quality control.
 - **Stock Updates**: Automatic inventory adjustments
 
 ### Purchase Invoices
+
 Manage supplier invoices and approvals.
 
 #### Features:
+
 - **Invoice Matching**: Link to purchase orders
 - **Three-way Matching**: PO → Receipt ��� Invoice
 - **Approval Workflows**: Multi-level approvals
@@ -143,9 +170,11 @@ Manage supplier invoices and approvals.
 - **Tax Calculations**: Input tax credit management
 
 ### Supplier Payments
+
 Handle outgoing payments to suppliers.
 
 #### Features:
+
 - **Payment Methods**: Various payment options
 - **Payment Scheduling**: Due date based payments
 - **Approval Process**: Payment authorization workflows
@@ -153,9 +182,11 @@ Handle outgoing payments to suppliers.
 - **Account Reconciliation**: Bank statement matching
 
 ### Debit Notes
+
 Handle supplier adjustments and claims.
 
 #### Features:
+
 - **Debit Creation**: Quality issues, short deliveries
 - **Supplier Communication**: Formal debit notifications
 - **Amount Tracking**: Debit amount management
@@ -164,9 +195,11 @@ Handle supplier adjustments and claims.
 ## 📦 Inventory Management
 
 ### Product Catalog
+
 Comprehensive product information management.
 
 #### Features:
+
 - **Product Details**: Name, SKU, descriptions
 - **Category Management**: Industrial product categorization
 - **Pricing Structure**: Unit pricing and cost tracking
@@ -175,6 +208,7 @@ Comprehensive product information management.
 - **Unit Management**: Various unit of measures
 
 #### Product Categories:
+
 - Industrial Valves
 - Pipes & Fittings
 - Pumps & Motors
@@ -185,9 +219,11 @@ Comprehensive product information management.
 - Spare Parts
 
 ### Stock Management
+
 Real-time inventory tracking and control.
 
 #### Features:
+
 - **Current Stock**: Real-time quantity tracking
 - **Stock Movements**: In/Out transaction history
 - **Location Tracking**: Warehouse location management
@@ -195,9 +231,11 @@ Real-time inventory tracking and control.
 - **Valuation**: FIFO/LIFO inventory valuation
 
 ### Reorder Point (ROP) Management
+
 Automated reorder suggestions and stock optimization.
 
 #### Features:
+
 - **Minimum Stock Levels**: Configurable reorder points
 - **Automatic Alerts**: Low stock notifications
 - **Reorder Suggestions**: Quantity recommendations
@@ -205,23 +243,28 @@ Automated reorder suggestions and stock optimization.
 - **Safety Stock**: Buffer stock calculations
 
 #### Stock Status Indicators:
+
 - **Critical**: Below minimum stock level
 - **Low**: Approaching reorder point
 - **Good**: Above minimum levels
 
 ### Assembly Management
+
 Handle product assemblies and Bill of Materials (BOM).
 
 #### Features:
+
 - **BOM Creation**: Component listings for assemblies
 - **Assembly Costing**: Total assembly cost calculations
 - **Component Tracking**: Sub-component inventory management
 - **Assembly Production**: Work order management
 
 ### Stock Adjustments
+
 Handle inventory corrections and adjustments.
 
 #### Features:
+
 - **Physical Count**: Cycle counting support
 - **Adjustment Reasons**: Categorized adjustment types
 - **Value Impact**: Financial impact tracking
@@ -230,9 +273,11 @@ Handle inventory corrections and adjustments.
 ## 💰 Financial Management
 
 ### Journal Entries
+
 Double-entry bookkeeping system implementation.
 
 #### Features:
+
 - **Account Structure**: Chart of accounts management
 - **Debit/Credit Entries**: Balanced entry requirements
 - **Reference Documentation**: Supporting document links
@@ -240,9 +285,11 @@ Double-entry bookkeeping system implementation.
 - **Audit Trail**: Complete transaction history
 
 ### Bank Accounts
+
 Multi-bank account management and reconciliation.
 
 #### Features:
+
 - **Account Setup**: Multiple bank account support
 - **Balance Tracking**: Real-time balance updates
 - **Transaction Recording**: All bank transactions
@@ -250,24 +297,29 @@ Multi-bank account management and reconciliation.
 - **Account Types**: Current, Savings, Loan accounts
 
 ### Contra Entries
+
 Fund transfer management between accounts.
 
 #### Features:
+
 - **Transfer Recording**: Inter-account transfers
 - **Fee Management**: Transfer charges and fees
 - **Reference Tracking**: Transfer confirmations
 - **Balance Updates**: Automatic account adjustments
 
 ### Financial Reports
+
 Comprehensive financial reporting suite.
 
 #### Sales Ledger:
+
 - Customer-wise account statements
 - Outstanding balances
 - Aging analysis
 - Payment history
 
 #### Purchase Ledger:
+
 - Supplier-wise account statements
 - Outstanding payables
 - Aging analysis
@@ -276,9 +328,11 @@ Comprehensive financial reporting suite.
 ## 🎯 Advanced Features
 
 ### Estimates & Approvals
+
 Project estimation with approval workflows.
 
 #### Features:
+
 - **Project Estimates**: Detailed cost breakdowns
 - **Multi-level Approvals**: Hierarchical approval process
 - **Priority Management**: High/Medium/Low priorities
@@ -287,15 +341,18 @@ Project estimation with approval workflows.
 - **Category Classification**: Project type categorization
 
 #### Approval Workflow:
+
 1. Estimate creation and submission
 2. Manager review and approval
 3. Client presentation and negotiation
 4. Final approval and conversion to order
 
 ### Secondary Purchase
+
 Emergency and ad-hoc purchase management.
 
 #### Features:
+
 - **Urgent Purchases**: Emergency procurement process
 - **Approval Bypass**: Streamlined authorization
 - **Local Suppliers**: Quick supplier onboarding
@@ -303,15 +360,18 @@ Emergency and ad-hoc purchase management.
 - **Justification**: Purchase reason documentation
 
 #### Purchase Categories:
+
 - Emergency repairs
 - Maintenance supplies
 - Office supplies
 - Temporary services
 
 ### User Management
+
 Multi-user system with role-based access control.
 
 #### User Roles:
+
 - **Administrator**: Full system access
 - **Sales Manager**: Sales and customer management
 - **Purchase Manager**: Procurement and supplier management
@@ -319,15 +379,18 @@ Multi-user system with role-based access control.
 - **Warehouse Manager**: Inventory and stock management
 
 #### Permission Management:
+
 - Module-wise access control
 - Function-level permissions
 - Data visibility rules
 - Approval authorities
 
 ### System Configuration
+
 Customizable system settings and preferences.
 
 #### Features:
+
 - **Company Information**: Branding and contact details
 - **Tax Settings**: GST rates and configurations
 - **Financial Year**: Period management
@@ -337,27 +400,33 @@ Customizable system settings and preferences.
 ## 📊 Reporting & Analytics
 
 ### Dashboard Analytics
+
 Real-time business intelligence and KPIs.
 
 #### Metrics:
+
 - Sales performance trends
 - Inventory turnover ratios
 - Customer payment patterns
 - Supplier performance indicators
 
 ### Business Intelligence
+
 Advanced analytics for strategic decision making.
 
 #### Features:
+
 - **Monthly Trends**: Sales and purchase patterns
 - **Product Analytics**: Top-selling products analysis
 - **Client Performance**: Customer profitability analysis
 - **Seasonal Analysis**: Business cycle identification
 
 ### Export Capabilities
+
 Data export functionality for external analysis.
 
 #### Supported Formats:
+
 - CSV for Excel compatibility
 - PDF for professional reports
 - JSON for system integration
@@ -365,27 +434,33 @@ Data export functionality for external analysis.
 ## 📱 User Experience
 
 ### Responsive Design
+
 Mobile-first design approach for all devices.
 
 #### Features:
+
 - **Mobile Optimization**: Touch-friendly interface
 - **Tablet Support**: Optimized layouts for tablets
 - **Desktop Experience**: Full-featured desktop interface
 - **Cross-browser**: Compatible with all modern browsers
 
 ### Navigation
+
 Intuitive navigation structure for efficient workflows.
 
 #### Features:
+
 - **Sidebar Navigation**: Organized module access
 - **Breadcrumbs**: Clear navigation path
 - **Quick Search**: Global search functionality
 - **Recent Activities**: Quick access to recent items
 
 ### Accessibility
+
 Inclusive design for all users.
 
 #### Features:
+
 - **Keyboard Navigation**: Full keyboard accessibility
 - **Screen Reader Support**: ARIA labels and descriptions
 - **High Contrast**: Accessible color schemes

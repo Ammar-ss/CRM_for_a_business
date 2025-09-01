@@ -106,7 +106,7 @@ export interface Order {
   products: OrderItem[];
   totalAmount: number;
   notes?: string;
-  status: 'pending' | 'confirmed' | 'processing' | 'completed' | 'cancelled';
+  status: "pending" | "confirmed" | "processing" | "completed" | "cancelled";
   createdAt: string;
   updatedAt?: string;
 }
@@ -126,22 +126,29 @@ export interface OrderFormData {
 export interface Payment {
   id: string;
   paymentNumber: string;
-  paymentType: 'received' | 'paid';
+  paymentType: "received" | "paid";
   clientName: string;
   amount: number;
   paymentDate: string;
-  paymentMethod: 'cash' | 'cheque' | 'bank_transfer' | 'online' | 'upi' | 'card' | 'other';
+  paymentMethod:
+    | "cash"
+    | "cheque"
+    | "bank_transfer"
+    | "online"
+    | "upi"
+    | "card"
+    | "other";
   referenceNumber?: string;
   description?: string;
   invoiceNumber?: string;
-  status: 'completed' | 'pending' | 'failed' | 'cancelled';
+  status: "completed" | "pending" | "failed" | "cancelled";
   createdAt: string;
   updatedAt?: string;
 }
 
 export interface PaymentFormData {
   paymentNumber: string;
-  paymentType: 'received' | 'paid';
+  paymentType: "received" | "paid";
   clientName: string;
   amount: number;
   paymentDate: string;
@@ -171,7 +178,7 @@ export interface DashboardStat {
   name: string;
   value: string;
   change: string;
-  trend: 'up' | 'down';
+  trend: "up" | "down";
   icon: any; // Lucide icon component
 }
 
@@ -213,7 +220,11 @@ export interface PageLayoutProps {
   children: React.ReactNode;
   actions?: {
     primary?: { label: string; onClick: () => void; icon?: React.ReactNode };
-    secondary?: { label: string; onClick: () => void; icon?: React.ReactNode }[];
+    secondary?: {
+      label: string;
+      onClick: () => void;
+      icon?: React.ReactNode;
+    }[];
   };
   showSearch?: boolean;
   showFilters?: boolean;
@@ -254,7 +265,13 @@ export interface ChartDataPoint {
 }
 
 // Status Badge Types
-export type StatusColor = 'green' | 'yellow' | 'red' | 'blue' | 'purple' | 'gray';
+export type StatusColor =
+  | "green"
+  | "yellow"
+  | "red"
+  | "blue"
+  | "purple"
+  | "gray";
 
 export interface StatusOption {
   value: string;
@@ -284,7 +301,7 @@ export interface InventoryItem {
 // Notification Types
 export interface Notification {
   id: string;
-  type: 'info' | 'success' | 'warning' | 'error';
+  type: "info" | "success" | "warning" | "error";
   title: string;
   message: string;
   timestamp: string;
@@ -295,14 +312,14 @@ export interface Notification {
 export interface FileUpload {
   file: File;
   progress: number;
-  status: 'pending' | 'uploading' | 'completed' | 'error';
+  status: "pending" | "uploading" | "completed" | "error";
   url?: string;
   error?: string;
 }
 
 // Export Types
 export interface ExportOptions {
-  format: 'csv' | 'excel' | 'pdf';
+  format: "csv" | "excel" | "pdf";
   dateRange?: DateRange;
   filters?: Record<string, any>;
   columns?: string[];

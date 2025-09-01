@@ -7,52 +7,68 @@ interface OrderFormProps {
   onSuccess: () => void;
 }
 
-export default function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps) {
+export default function OrderForm({
+  isOpen,
+  onClose,
+  onSuccess,
+}: OrderFormProps) {
   const [formData, setFormData] = useState({
     orderNumber: "",
     clientName: "",
     clientContact: "",
-    orderDate: new Date().toISOString().split('T')[0],
+    orderDate: new Date().toISOString().split("T")[0],
     deliveryDate: "",
     products: [{ name: "", quantity: 1, unitPrice: 0, total: 0 }],
     notes: "",
-    status: "pending"
+    status: "pending",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
-  const handleProductChange = (index: number, field: string, value: string | number) => {
+  const handleProductChange = (
+    index: number,
+    field: string,
+    value: string | number,
+  ) => {
     const updatedProducts = formData.products.map((product, i) => {
       if (i === index) {
         const updatedProduct = { ...product, [field]: value };
-        if (field === 'quantity' || field === 'unitPrice') {
-          updatedProduct.total = updatedProduct.quantity * updatedProduct.unitPrice;
+        if (field === "quantity" || field === "unitPrice") {
+          updatedProduct.total =
+            updatedProduct.quantity * updatedProduct.unitPrice;
         }
         return updatedProduct;
       }
       return product;
     });
-    setFormData(prev => ({ ...prev, products: updatedProducts }));
+    setFormData((prev) => ({ ...prev, products: updatedProducts }));
   };
 
   const addProduct = () => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      products: [...prev.products, { name: "", quantity: 1, unitPrice: 0, total: 0 }]
+      products: [
+        ...prev.products,
+        { name: "", quantity: 1, unitPrice: 0, total: 0 },
+      ],
     }));
   };
 
   const removeProduct = (index: number) => {
     if (formData.products.length > 1) {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        products: prev.products.filter((_, i) => i !== index)
+        products: prev.products.filter((_, i) => i !== index),
       }));
     }
   };
@@ -63,15 +79,15 @@ export default function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Generate order number if not provided
     const orderNumber = formData.orderNumber || `SO-${Date.now()}`;
-    
+
     const orderData = {
       ...formData,
       orderNumber,
       totalAmount: calculateTotal(),
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     };
 
     console.log("Sales Order Data:", orderData);
@@ -84,7 +100,9 @@ export default function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between p-6 border-b">
-          <h2 className="text-xl font-semibold text-gray-900">Create Sales Order</h2>
+          <h2 className="text-xl font-semibold text-gray-900">
+            Create Sales Order
+          </h2>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -197,34 +215,57 @@ export default function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps
 
             <div className="space-y-4">
               {formData.products.map((product, index) => (
-                <div key={index} className="grid grid-cols-1 md:grid-cols-5 gap-4 p-4 border border-gray-200 rounded-lg">
+                <div
+                  key={index}
+                  className="grid grid-cols-1 md:grid-cols-5 gap-4 p-4 border border-gray-200 rounded-lg"
+                >
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Product Name</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Product Name
+                    </label>
                     <input
                       type="text"
                       value={product.name}
-                      onChange={(e) => handleProductChange(index, 'name', e.target.value)}
+                      onChange={(e) =>
+                        handleProductChange(index, "name", e.target.value)
+                      }
                       className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Quantity
+                    </label>
                     <input
                       type="number"
                       value={product.quantity}
-                      onChange={(e) => handleProductChange(index, 'quantity', parseInt(e.target.value) || 0)}
+                      onChange={(e) =>
+                        handleProductChange(
+                          index,
+                          "quantity",
+                          parseInt(e.target.value) || 0,
+                        )
+                      }
                       min="1"
                       className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Unit Price (₹)</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Unit Price (₹)
+                    </label>
                     <input
                       type="number"
                       value={product.unitPrice}
-                      onChange={(e) => handleProductChange(index, 'unitPrice', parseFloat(e.target.value) || 0)}
+                      onChange={(e) =>
+                        handleProductChange(
+                          index,
+                          "unitPrice",
+                          parseFloat(e.target.value) || 0,
+                        )
+                      }
                       min="0"
                       step="0.01"
                       className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -233,7 +274,9 @@ export default function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps
                   </div>
                   <div className="flex items-end">
                     <div className="flex-1">
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Total (₹)</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Total (₹)
+                      </label>
                       <input
                         type="number"
                         value={product.total.toFixed(2)}
@@ -257,8 +300,12 @@ export default function OrderForm({ isOpen, onClose, onSuccess }: OrderFormProps
 
             <div className="mt-4 p-4 bg-gray-50 rounded-lg">
               <div className="flex justify-between items-center">
-                <span className="text-lg font-medium text-gray-900">Grand Total:</span>
-                <span className="text-xl font-bold text-blue-600">₹{calculateTotal().toFixed(2)}</span>
+                <span className="text-lg font-medium text-gray-900">
+                  Grand Total:
+                </span>
+                <span className="text-xl font-bold text-blue-600">
+                  ₹{calculateTotal().toFixed(2)}
+                </span>
               </div>
             </div>
           </div>

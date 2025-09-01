@@ -22,9 +22,9 @@ export default function Index() {
       const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(loginData)
+        body: JSON.stringify(loginData),
       });
 
       const data: AuthResponse = await response.json();
@@ -61,7 +61,9 @@ export default function Index() {
           </div>
 
           {/* Sign In Heading */}
-          <h1 className="text-lg font-medium text-gray-900 mb-8 text-center">Sign In</h1>
+          <h1 className="text-lg font-medium text-gray-900 mb-8 text-center">
+            Sign In
+          </h1>
 
           {/* Login Form */}
           <form onSubmit={handleSubmit} className="space-y-6">

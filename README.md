@@ -7,12 +7,14 @@ A comprehensive Enterprise Resource Planning (ERP) system designed specifically 
 ## 🌟 Features
 
 ### 📊 Dashboard & Analytics
+
 - **Real-time Dashboard**: Comprehensive overview with key metrics and KPIs
 - **Quick Actions**: One-click access to frequently used functions
 - **Business Insights**: Monthly trends, top products, and client analytics
 - **Inventory Alerts**: Low stock notifications and reorder point management
 
 ### ���� Sales Management
+
 - **Sales Orders**: Create and track customer orders
 - **Quotations**: Generate professional quotes with auto-calculations
 - **Invoicing**: Automated invoice generation with GST calculations
@@ -20,24 +22,28 @@ A comprehensive Enterprise Resource Planning (ERP) system designed specifically 
 - **Client Management**: Comprehensive customer database
 
 ### 🛒 Purchase Management
+
 - **Purchase Orders**: Streamlined supplier order management
 - **Materials Received**: Track incoming inventory and quality checks
 - **Supplier Management**: Maintain supplier relationships and contact details
 - **Secondary Purchases**: Handle emergency and ad-hoc purchases
 
 ### 📦 Inventory Control
+
 - **Product Management**: Complete product catalog with categories and pricing
 - **Stock Monitoring**: Real-time inventory levels and alerts
 - **Reorder Point Management**: Automated reorder suggestions
 - **Assembly Management**: Handle product assemblies and BOM
 
 ### 💰 Financial Management
+
 - **Journal Entries**: Double-entry bookkeeping system
 - **Bank Account Management**: Multiple bank account tracking
 - **Payment Processing**: Handle incoming and outgoing payments
 - **Financial Reports**: Sales and purchase ledgers
 
 ### 🎯 Advanced Features
+
 - **Estimate & Approvals**: Project estimation with approval workflows
 - **Multi-user Support**: Role-based access control
 - **Data Export**: CSV export functionality
@@ -46,23 +52,27 @@ A comprehensive Enterprise Resource Planning (ERP) system designed specifically 
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js (v18 or higher)
 - npm or yarn package manager
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/yourusername/ammar-industrial-erp.git
    cd ammar-industrial-erp
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start the development server**
+
    ```bash
    npm run dev
    ```
@@ -76,6 +86,7 @@ A comprehensive Enterprise Resource Planning (ERP) system designed specifically 
 ## 🔧 Development Setup
 
 ### Project Structure
+
 ```
 ammar-industrial-erp/
 ├── client/                 # Frontend React application
@@ -104,6 +115,7 @@ ammar-industrial-erp/
 ### Technology Stack
 
 **Frontend:**
+
 - React 18 with TypeScript
 - Vite for fast development
 - Tailwind CSS for styling
@@ -111,11 +123,13 @@ ammar-industrial-erp/
 - React Router for navigation
 
 **Backend:**
+
 - Node.js with Express
 - TypeScript
 - File-based data storage (JSON)
 
 **UI Components:**
+
 - Custom component library built with Tailwind CSS
 - Responsive design patterns
 - Accessibility-first approach
@@ -123,11 +137,13 @@ ammar-industrial-erp/
 ## 📱 Usage Guide
 
 ### Login & Authentication
+
 1. Navigate to the application URL
 2. Enter the default credentials or your assigned login details
 3. The system supports session persistence and "Remember Me" functionality
 
 ### Dashboard Navigation
+
 - **Sidebar Menu**: Access all modules through the collapsible sidebar
 - **Quick Actions**: Use dashboard quick actions for common tasks
 - **Search**: Global search functionality across modules
@@ -136,25 +152,30 @@ ammar-industrial-erp/
 ### Key Workflows
 
 #### Creating a Sales Order
+
 1. Navigate to Sales → Sales Order or use Quick Actions
 2. Select client and add products
 3. Review pricing and apply discounts if needed
 4. Save and generate order confirmation
 
 #### Managing Inventory
+
 1. Go to Management → Products
 2. Add new products with categories and pricing
 3. Monitor stock levels through the dashboard
 4. Set reorder points for automatic alerts
 
 #### Processing Payments
+
 1. Use Quick Actions → Add Payment
 2. Select payment type (received/paid)
 3. Enter payment details and method
 4. Link to relevant invoices or orders
 
 ### Sample Data
+
 The application comes pre-loaded with realistic sample data including:
+
 - **156 Products** across various industrial categories
 - **42 Active Clients** with complete contact information
 - **Sample Transactions** demonstrating typical SME workflows
@@ -162,17 +183,19 @@ The application comes pre-loaded with realistic sample data including:
 
 ## 🔐 Default Users & Permissions
 
-| Username | Password | Role | Permissions |
-|----------|----------|------|-------------|
-| admin | 123 | Administrator | Full system access |
-| rajesh.sales | 123 | Sales Manager | Sales, clients, quotations |
-| priya.accounts | 123 | Accountant | Accounting, payments, reports |
-| amit.warehouse | 123 | Warehouse Manager | Inventory, products, stock |
+| Username       | Password | Role              | Permissions                   |
+| -------------- | -------- | ----------------- | ----------------------------- |
+| admin          | 123      | Administrator     | Full system access            |
+| rajesh.sales   | 123      | Sales Manager     | Sales, clients, quotations    |
+| priya.accounts | 123      | Accountant        | Accounting, payments, reports |
+| amit.warehouse | 123      | Warehouse Manager | Inventory, products, stock    |
 
 ## 🎨 Customization
 
 ### Branding
+
 Update company information in `client/lib/constants.ts`:
+
 ```typescript
 export const COMPANY_INFO = {
   name: "Your Company Name",
@@ -182,25 +205,31 @@ export const COMPANY_INFO = {
 ```
 
 ### Sample Data
+
 Modify sample data in `client/lib/sampleData.ts` to match your business:
+
 - Product categories and pricing
 - Client and supplier information
 - Financial configurations
 
 ### UI Theming
+
 The application uses Tailwind CSS. Customize colors and styling in:
+
 - `tailwind.config.ts` - Theme configuration
 - `client/global.css` - Global styles
 
 ## 📊 Business Intelligence
 
 ### Dashboard Metrics
+
 - Monthly sales trends and targets
 - Top-selling products analysis
 - Client performance metrics
 - Inventory turnover rates
 
 ### Reporting Features
+
 - Sales and purchase ledgers
 - Inventory reports with reorder suggestions
 - Payment tracking and aging reports
@@ -209,18 +238,22 @@ The application uses Tailwind CSS. Customize colors and styling in:
 ## 🚀 Deployment
 
 ### Production Build
+
 ```bash
 npm run build
 ```
 
 ### Environment Variables
+
 Create a `.env` file for production settings:
+
 ```
 VITE_API_URL=your-api-url
 VITE_APP_NAME=AMMAR Industrial ERP
 ```
 
 ### Deployment Options
+
 - **Netlify**: Automated deployment with included configuration
 - **Vercel**: Zero-config deployment for full-stack applications
 - **Traditional Hosting**: Build and upload the `dist` folder
@@ -234,6 +267,7 @@ VITE_APP_NAME=AMMAR Industrial ERP
 5. Open a Pull Request
 
 ### Development Guidelines
+
 - Follow TypeScript best practices
 - Maintain component modularity
 - Write descriptive commit messages
@@ -242,6 +276,7 @@ VITE_APP_NAME=AMMAR Industrial ERP
 ## 📞 Support
 
 For technical support or feature requests:
+
 - Create an issue on GitHub
 - Email: support@ammarindustrial.com
 - Documentation: [Project Wiki](https://github.com/yourusername/ammar-industrial-erp/wiki)
@@ -261,4 +296,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ for Small & Medium Enterprises**
 
-*Streamline your business operations with AMMAR Industrial ERP - where efficiency meets innovation.*
+_Streamline your business operations with AMMAR Industrial ERP - where efficiency meets innovation._

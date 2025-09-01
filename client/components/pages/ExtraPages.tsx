@@ -1,5 +1,18 @@
 import { useState } from "react";
-import { Plus, Search, Filter, Eye, Edit, Trash2, CheckCircle, XCircle, Clock, AlertTriangle, FileText, DollarSign } from "lucide-react";
+import {
+  Plus,
+  Search,
+  Filter,
+  Eye,
+  Edit,
+  Trash2,
+  CheckCircle,
+  XCircle,
+  Clock,
+  AlertTriangle,
+  FileText,
+  DollarSign,
+} from "lucide-react";
 import PageLayout from "../PageLayout";
 import { formatCurrency, formatDate, getStatusColor } from "../../lib/helpers";
 
@@ -21,10 +34,10 @@ export function EstimateApprovalsPage() {
       submittedBy: "Rajesh Kumar",
       priority: "high",
       category: "Construction",
-      validUntil: "2024-02-15"
+      validUntil: "2024-02-15",
     },
     {
-      id: "EST-002", 
+      id: "EST-002",
       estimateNumber: "EST-2024-002",
       projectName: "Safety Equipment Upgrade",
       clientName: "XYZ Engineering Works",
@@ -35,11 +48,11 @@ export function EstimateApprovalsPage() {
       submittedBy: "Priya Sharma",
       priority: "medium",
       category: "Safety",
-      validUntil: "2024-02-18"
+      validUntil: "2024-02-18",
     },
     {
       id: "EST-003",
-      estimateNumber: "EST-2024-003", 
+      estimateNumber: "EST-2024-003",
       projectName: "Pump Installation Service",
       clientName: "PQR Construction Co",
       estimateDate: "2024-01-20",
@@ -49,25 +62,33 @@ export function EstimateApprovalsPage() {
       submittedBy: "Amit Patel",
       priority: "low",
       category: "Service",
-      validUntil: "2024-02-20"
-    }
+      validUntil: "2024-02-20",
+    },
   ];
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case "approved": return <CheckCircle className="h-4 w-4 text-green-600" />;
-      case "rejected": return <XCircle className="h-4 w-4 text-red-600" />;
-      case "pending_approval": return <Clock className="h-4 w-4 text-yellow-600" />;
-      default: return <AlertTriangle className="h-4 w-4 text-gray-600" />;
+      case "approved":
+        return <CheckCircle className="h-4 w-4 text-green-600" />;
+      case "rejected":
+        return <XCircle className="h-4 w-4 text-red-600" />;
+      case "pending_approval":
+        return <Clock className="h-4 w-4 text-yellow-600" />;
+      default:
+        return <AlertTriangle className="h-4 w-4 text-gray-600" />;
     }
   };
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case "high": return "bg-red-100 text-red-800";
-      case "medium": return "bg-yellow-100 text-yellow-800";
-      case "low": return "bg-green-100 text-green-800";
-      default: return "bg-gray-100 text-gray-800";
+      case "high":
+        return "bg-red-100 text-red-800";
+      case "medium":
+        return "bg-yellow-100 text-yellow-800";
+      case "low":
+        return "bg-green-100 text-green-800";
+      default:
+        return "bg-gray-100 text-gray-800";
     }
   };
 
@@ -76,14 +97,18 @@ export function EstimateApprovalsPage() {
       title="Estimates & Approvals"
       description="Manage project estimates and approval workflows"
       actions={{
-        primary: { 
-          label: "New Estimate", 
-          onClick: () => setShowEstimateForm(true), 
-          icon: <Plus className="h-4 w-4 mr-2" /> 
+        primary: {
+          label: "New Estimate",
+          onClick: () => setShowEstimateForm(true),
+          icon: <Plus className="h-4 w-4 mr-2" />,
         },
         secondary: [
-          { label: "Export", onClick: () => {}, icon: <FileText className="h-4 w-4 mr-2" /> }
-        ]
+          {
+            label: "Export",
+            onClick: () => {},
+            icon: <FileText className="h-4 w-4 mr-2" />,
+          },
+        ],
       }}
     >
       <div className="p-6">
@@ -92,43 +117,54 @@ export function EstimateApprovalsPage() {
           <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-blue-600">Total Estimates</p>
-                <p className="text-2xl font-bold text-blue-900">{estimates.length}</p>
+                <p className="text-sm font-medium text-blue-600">
+                  Total Estimates
+                </p>
+                <p className="text-2xl font-bold text-blue-900">
+                  {estimates.length}
+                </p>
               </div>
               <FileText className="h-8 w-8 text-blue-600" />
             </div>
           </div>
-          
+
           <div className="bg-green-50 p-4 rounded-lg border border-green-200">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-green-600">Approved</p>
                 <p className="text-2xl font-bold text-green-900">
-                  {estimates.filter(e => e.status === 'approved').length}
+                  {estimates.filter((e) => e.status === "approved").length}
                 </p>
               </div>
               <CheckCircle className="h-8 w-8 text-green-600" />
             </div>
           </div>
-          
+
           <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-yellow-600">Pending</p>
                 <p className="text-2xl font-bold text-yellow-900">
-                  {estimates.filter(e => e.status === 'pending_approval').length}
+                  {
+                    estimates.filter((e) => e.status === "pending_approval")
+                      .length
+                  }
                 </p>
               </div>
               <Clock className="h-8 w-8 text-yellow-600" />
             </div>
           </div>
-          
+
           <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-purple-600">Total Value</p>
+                <p className="text-sm font-medium text-purple-600">
+                  Total Value
+                </p>
                 <p className="text-2xl font-bold text-purple-900">
-                  {formatCurrency(estimates.reduce((sum, e) => sum + e.totalAmount, 0))}
+                  {formatCurrency(
+                    estimates.reduce((sum, e) => sum + e.totalAmount, 0),
+                  )}
                 </p>
               </div>
               <DollarSign className="h-8 w-8 text-purple-600" />
@@ -140,7 +176,9 @@ export function EstimateApprovalsPage() {
         <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-200">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-medium text-gray-900">Estimates List</h3>
+              <h3 className="text-lg font-medium text-gray-900">
+                Estimates List
+              </h3>
               <div className="flex items-center space-x-3">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -157,7 +195,7 @@ export function EstimateApprovalsPage() {
               </div>
             </div>
           </div>
-          
+
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
@@ -190,15 +228,22 @@ export function EstimateApprovalsPage() {
                         <div className="text-sm font-medium text-gray-900">
                           {estimate.estimateNumber}
                         </div>
-                        <div className="text-sm text-gray-500">{estimate.projectName}</div>
+                        <div className="text-sm text-gray-500">
+                          {estimate.projectName}
+                        </div>
                         <div className="text-xs text-gray-400">
-                          {formatDate(estimate.estimateDate)} | {estimate.category}
+                          {formatDate(estimate.estimateDate)} |{" "}
+                          {estimate.category}
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{estimate.clientName}</div>
-                      <div className="text-xs text-gray-500">Valid until: {formatDate(estimate.validUntil)}</div>
+                      <div className="text-sm text-gray-900">
+                        {estimate.clientName}
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        Valid until: {formatDate(estimate.validUntil)}
+                      </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm font-medium text-gray-900">
@@ -208,8 +253,10 @@ export function EstimateApprovalsPage() {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         {getStatusIcon(estimate.status)}
-                        <span className={`ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(estimate.status)}`}>
-                          {estimate.status.replace('_', ' ').toUpperCase()}
+                        <span
+                          className={`ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(estimate.status)}`}
+                        >
+                          {estimate.status.replace("_", " ").toUpperCase()}
                         </span>
                       </div>
                       <div className="text-xs text-gray-500 mt-1">
@@ -217,26 +264,28 @@ export function EstimateApprovalsPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getPriorityColor(estimate.priority)}`}>
+                      <span
+                        className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getPriorityColor(estimate.priority)}`}
+                      >
                         {estimate.priority.toUpperCase()}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <div className="flex items-center space-x-2">
-                        <button 
+                        <button
                           onClick={() => setSelectedEstimate(estimate)}
                           className="text-blue-600 hover:text-blue-900"
                           title="View Details"
                         >
                           <Eye className="h-4 w-4" />
                         </button>
-                        <button 
+                        <button
                           className="text-yellow-600 hover:text-yellow-900"
                           title="Edit"
                         >
                           <Edit className="h-4 w-4" />
                         </button>
-                        <button 
+                        <button
                           className="text-red-600 hover:text-red-900"
                           title="Delete"
                         >
@@ -273,12 +322,12 @@ export function SecondaryPurchasePage() {
       reason: "Urgent requirement for ongoing project",
       items: [
         { name: "Emergency Bolts", quantity: 50, unitPrice: 125, total: 6250 },
-        { name: "Safety Wire", quantity: 25, unitPrice: 250, total: 6250 }
-      ]
+        { name: "Safety Wire", quantity: 25, unitPrice: 250, total: 6250 },
+      ],
     },
     {
       id: "SP-002",
-      purchaseNumber: "SP-2024-002", 
+      purchaseNumber: "SP-2024-002",
       supplierName: "Quick Supply Co",
       purchaseDate: "2024-01-21",
       category: "Maintenance Purchase",
@@ -288,18 +337,32 @@ export function SecondaryPurchasePage() {
       approvedBy: "Maintenance Head",
       reason: "Routine maintenance supplies",
       items: [
-        { name: "Cleaning Supplies", quantity: 10, unitPrice: 375, total: 3750 },
-        { name: "Maintenance Tools", quantity: 5, unitPrice: 1000, total: 5000 }
-      ]
-    }
+        {
+          name: "Cleaning Supplies",
+          quantity: 10,
+          unitPrice: 375,
+          total: 3750,
+        },
+        {
+          name: "Maintenance Tools",
+          quantity: 5,
+          unitPrice: 1000,
+          total: 5000,
+        },
+      ],
+    },
   ];
 
   const getUrgencyColor = (urgency: string) => {
     switch (urgency) {
-      case "urgent": return "bg-red-100 text-red-800";
-      case "normal": return "bg-blue-100 text-blue-800";
-      case "low": return "bg-gray-100 text-gray-800";
-      default: return "bg-gray-100 text-gray-800";
+      case "urgent":
+        return "bg-red-100 text-red-800";
+      case "normal":
+        return "bg-blue-100 text-blue-800";
+      case "low":
+        return "bg-gray-100 text-gray-800";
+      default:
+        return "bg-gray-100 text-gray-800";
     }
   };
 
@@ -308,14 +371,18 @@ export function SecondaryPurchasePage() {
       title="Secondary Purchase"
       description="Manage secondary purchases and emergency procurement"
       actions={{
-        primary: { 
-          label: "New Secondary Purchase", 
-          onClick: () => setShowPurchaseForm(true), 
-          icon: <Plus className="h-4 w-4 mr-2" /> 
+        primary: {
+          label: "New Secondary Purchase",
+          onClick: () => setShowPurchaseForm(true),
+          icon: <Plus className="h-4 w-4 mr-2" />,
         },
         secondary: [
-          { label: "Purchase Reports", onClick: () => {}, icon: <FileText className="h-4 w-4 mr-2" /> }
-        ]
+          {
+            label: "Purchase Reports",
+            onClick: () => {},
+            icon: <FileText className="h-4 w-4 mr-2" />,
+          },
+        ],
       }}
     >
       <div className="p-6">
@@ -324,31 +391,47 @@ export function SecondaryPurchasePage() {
           <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-orange-600">Total Secondary Purchases</p>
-                <p className="text-2xl font-bold text-orange-900">{secondaryPurchases.length}</p>
+                <p className="text-sm font-medium text-orange-600">
+                  Total Secondary Purchases
+                </p>
+                <p className="text-2xl font-bold text-orange-900">
+                  {secondaryPurchases.length}
+                </p>
               </div>
               <DollarSign className="h-8 w-8 text-orange-600" />
             </div>
           </div>
-          
+
           <div className="bg-red-50 p-4 rounded-lg border border-red-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-red-600">Urgent Purchases</p>
+                <p className="text-sm font-medium text-red-600">
+                  Urgent Purchases
+                </p>
                 <p className="text-2xl font-bold text-red-900">
-                  {secondaryPurchases.filter(p => p.urgency === 'urgent').length}
+                  {
+                    secondaryPurchases.filter((p) => p.urgency === "urgent")
+                      .length
+                  }
                 </p>
               </div>
               <AlertTriangle className="h-8 w-8 text-red-600" />
             </div>
           </div>
-          
+
           <div className="bg-green-50 p-4 rounded-lg border border-green-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-green-600">Total Value</p>
+                <p className="text-sm font-medium text-green-600">
+                  Total Value
+                </p>
                 <p className="text-2xl font-bold text-green-900">
-                  {formatCurrency(secondaryPurchases.reduce((sum, p) => sum + p.totalAmount, 0))}
+                  {formatCurrency(
+                    secondaryPurchases.reduce(
+                      (sum, p) => sum + p.totalAmount,
+                      0,
+                    ),
+                  )}
                 </p>
               </div>
               <DollarSign className="h-8 w-8 text-green-600" />
@@ -359,9 +442,11 @@ export function SecondaryPurchasePage() {
         {/* Purchases Table */}
         <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">Secondary Purchases</h3>
+            <h3 className="text-lg font-medium text-gray-900">
+              Secondary Purchases
+            </h3>
           </div>
-          
+
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
@@ -394,15 +479,21 @@ export function SecondaryPurchasePage() {
                         <div className="text-sm font-medium text-gray-900">
                           {purchase.purchaseNumber}
                         </div>
-                        <div className="text-sm text-gray-500">{purchase.category}</div>
+                        <div className="text-sm text-gray-500">
+                          {purchase.category}
+                        </div>
                         <div className="text-xs text-gray-400">
                           {formatDate(purchase.purchaseDate)}
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{purchase.supplierName}</div>
-                      <div className="text-xs text-gray-500">Approved by: {purchase.approvedBy}</div>
+                      <div className="text-sm text-gray-900">
+                        {purchase.supplierName}
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        Approved by: {purchase.approvedBy}
+                      </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm font-medium text-gray-900">
@@ -410,21 +501,31 @@ export function SecondaryPurchasePage() {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getUrgencyColor(purchase.urgency)}`}>
+                      <span
+                        className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getUrgencyColor(purchase.urgency)}`}
+                      >
                         {purchase.urgency.toUpperCase()}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(purchase.status)}`}>
+                      <span
+                        className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(purchase.status)}`}
+                      >
                         {purchase.status.toUpperCase()}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <div className="flex items-center space-x-2">
-                        <button className="text-blue-600 hover:text-blue-900" title="View Details">
+                        <button
+                          className="text-blue-600 hover:text-blue-900"
+                          title="View Details"
+                        >
                           <Eye className="h-4 w-4" />
                         </button>
-                        <button className="text-yellow-600 hover:text-yellow-900" title="Edit">
+                        <button
+                          className="text-yellow-600 hover:text-yellow-900"
+                          title="Edit"
+                        >
                           <Edit className="h-4 w-4" />
                         </button>
                       </div>
@@ -440,7 +541,7 @@ export function SecondaryPurchasePage() {
   );
 }
 
-// Estimate/Approvals Items Page  
+// Estimate/Approvals Items Page
 export function EstimateApprovalsItemsPage() {
   const estimateItems = [
     {
@@ -453,10 +554,10 @@ export function EstimateApprovalsItemsPage() {
       totalPrice: 37500,
       status: "approved",
       approvalDate: "2024-01-16",
-      notes: "Standard installation charges"
+      notes: "Standard installation charges",
     },
     {
-      id: "EI-002", 
+      id: "EI-002",
       estimateNumber: "EST-2024-001",
       itemName: "Material Cost - Industrial Valves",
       category: "Material",
@@ -465,7 +566,7 @@ export function EstimateApprovalsItemsPage() {
       totalPrice: 42750,
       status: "approved",
       approvalDate: "2024-01-16",
-      notes: "Premium grade valves"
+      notes: "Premium grade valves",
     },
     {
       id: "EI-003",
@@ -477,8 +578,8 @@ export function EstimateApprovalsItemsPage() {
       totalPrice: 45000,
       status: "pending",
       approvalDate: "",
-      notes: "Comprehensive safety audit included"
-    }
+      notes: "Comprehensive safety audit included",
+    },
   ];
 
   return (
@@ -489,9 +590,11 @@ export function EstimateApprovalsItemsPage() {
       <div className="p-6">
         <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">Estimate Items</h3>
+            <h3 className="text-lg font-medium text-gray-900">
+              Estimate Items
+            </h3>
           </div>
-          
+
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
@@ -521,10 +624,16 @@ export function EstimateApprovalsItemsPage() {
                   <tr key={item.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div>
-                        <div className="text-sm font-medium text-gray-900">{item.itemName}</div>
-                        <div className="text-sm text-gray-500">{item.estimateNumber}</div>
+                        <div className="text-sm font-medium text-gray-900">
+                          {item.itemName}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {item.estimateNumber}
+                        </div>
                         {item.notes && (
-                          <div className="text-xs text-gray-400 mt-1">{item.notes}</div>
+                          <div className="text-xs text-gray-400 mt-1">
+                            {item.notes}
+                          </div>
                         )}
                       </div>
                     </td>
@@ -543,7 +652,9 @@ export function EstimateApprovalsItemsPage() {
                       {formatCurrency(item.totalPrice)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(item.status)}`}>
+                      <span
+                        className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(item.status)}`}
+                      >
                         {item.status.toUpperCase()}
                       </span>
                       {item.approvalDate && (
