@@ -5,6 +5,8 @@ import DashboardHeader from "../components/DashboardHeader";
 import ProductForm from "../components/ProductForm";
 import ClientForm from "../components/ClientForm";
 import SupplierForm from "../components/SupplierForm";
+import OrderForm from "../components/OrderForm";
+import PaymentForm from "../components/PaymentForm";
 import Calculator from "../components/Calculator";
 import DashboardOverview from "../components/pages/DashboardOverview";
 import { SalesOrderPage, ProformaInvoicePage, SalesInvoicePage, ReceiptPage, PaymentFollowupPage, CreditNotePage } from "../components/pages/SalesPages";
@@ -106,6 +108,8 @@ export default function Dashboard() {
   const [showProductForm, setShowProductForm] = useState(false);
   const [showClientForm, setShowClientForm] = useState(false);
   const [showSupplierForm, setShowSupplierForm] = useState(false);
+  const [showOrderForm, setShowOrderForm] = useState(false);
+  const [showPaymentForm, setShowPaymentForm] = useState(false);
   const [showCalculator, setShowCalculator] = useState(false);
   const [activeTab, setActiveTab] = useState("products");
   const [expandedMenus, setExpandedMenus] = useState<string[]>([]);
@@ -150,7 +154,14 @@ export default function Dashboard() {
   const renderPageContent = () => {
     switch (activeSection) {
       case "dashboard":
-        return <DashboardOverview />;
+        return (
+          <DashboardOverview
+            onShowProductForm={() => setShowProductForm(true)}
+            onShowClientForm={() => setShowClientForm(true)}
+            onShowOrderForm={() => setShowOrderForm(true)}
+            onShowPaymentForm={() => setShowPaymentForm(true)}
+          />
+        );
 
       // Primary Section
       case "enquiries":
@@ -403,6 +414,24 @@ export default function Dashboard() {
         onSuccess={() => {
           alert("Supplier created successfully!");
           setShowSupplierForm(false);
+        }}
+      />
+
+      <OrderForm
+        isOpen={showOrderForm}
+        onClose={() => setShowOrderForm(false)}
+        onSuccess={() => {
+          alert("Sales order created successfully!");
+          setShowOrderForm(false);
+        }}
+      />
+
+      <PaymentForm
+        isOpen={showPaymentForm}
+        onClose={() => setShowPaymentForm(false)}
+        onSuccess={() => {
+          alert("Payment recorded successfully!");
+          setShowPaymentForm(false);
         }}
       />
 
