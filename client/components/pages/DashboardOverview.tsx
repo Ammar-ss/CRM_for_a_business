@@ -1,6 +1,18 @@
 import { BarChart3, TrendingUp, Package, Users, ShoppingCart, DollarSign } from "lucide-react";
 
-export default function DashboardOverview() {
+interface DashboardOverviewProps {
+  onShowProductForm?: () => void;
+  onShowClientForm?: () => void;
+  onShowOrderForm?: () => void;
+  onShowPaymentForm?: () => void;
+}
+
+export default function DashboardOverview({
+  onShowProductForm,
+  onShowClientForm,
+  onShowOrderForm,
+  onShowPaymentForm
+}: DashboardOverviewProps) {
   const stats = [
     { name: "Total Sales", value: "₹2,45,680", change: "+12%", trend: "up", icon: DollarSign },
     { name: "Total Products", value: "1,247", change: "+5%", trend: "up", icon: Package },
