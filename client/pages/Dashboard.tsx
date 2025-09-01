@@ -154,11 +154,11 @@ export default function Dashboard() {
 
       // Extras
       case "estimate-approvals":
-        return <GenericPage title="Estimate/Approvals" description="Manage estimates and approval workflows" />;
+        return <EstimateApprovalsPage />;
       case "secondary-purchase":
-        return <GenericPage title="Secondary Purchase" description="Handle secondary purchase transactions" />;
+        return <SecondaryPurchasePage />;
       case "estimate-approvals-items":
-        return <GenericPage title="Estimate/Approvals Items" description="Manage items in estimates and approvals" />;
+        return <EstimateApprovalsItemsPage />;
 
       default:
         return <DashboardOverview />;
