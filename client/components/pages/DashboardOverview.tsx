@@ -105,19 +105,31 @@ export default function DashboardOverview({
       <div className="bg-white p-6 rounded-lg border border-gray-200">
         <h3 className="text-lg font-medium text-gray-900 mb-4">Quick Actions</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <button className="p-4 text-center border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+          <button
+            onClick={onShowProductForm}
+            className="p-4 text-center border border-gray-300 rounded-lg hover:bg-gray-50 hover:border-blue-300 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
             <Package className="h-8 w-8 text-blue-600 mx-auto mb-2" />
             <span className="text-sm font-medium text-gray-900">Add Product</span>
           </button>
-          <button className="p-4 text-center border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+          <button
+            onClick={onShowClientForm}
+            className="p-4 text-center border border-gray-300 rounded-lg hover:bg-gray-50 hover:border-green-300 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500"
+          >
             <Users className="h-8 w-8 text-green-600 mx-auto mb-2" />
             <span className="text-sm font-medium text-gray-900">Add Client</span>
           </button>
-          <button className="p-4 text-center border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+          <button
+            onClick={onShowOrderForm}
+            className="p-4 text-center border border-gray-300 rounded-lg hover:bg-gray-50 hover:border-purple-300 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500"
+          >
             <ShoppingCart className="h-8 w-8 text-purple-600 mx-auto mb-2" />
             <span className="text-sm font-medium text-gray-900">New Order</span>
           </button>
-          <button className="p-4 text-center border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+          <button
+            onClick={onShowPaymentForm}
+            className="p-4 text-center border border-gray-300 rounded-lg hover:bg-gray-50 hover:border-orange-300 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500"
+          >
             <DollarSign className="h-8 w-8 text-orange-600 mx-auto mb-2" />
             <span className="text-sm font-medium text-gray-900">Add Payment</span>
           </button>
