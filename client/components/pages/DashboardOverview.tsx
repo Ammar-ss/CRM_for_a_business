@@ -136,41 +136,150 @@ export default function DashboardOverview({
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Sales Chart */}
-        <div className="bg-white p-6 rounded-lg border border-gray-200">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Sales Overview</h3>
-          <div className="flex items-center justify-center h-64 bg-gray-50 rounded-lg">
-            <div className="text-center">
-              <BarChart3 className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-              <p className="text-sm text-gray-500">Sales chart will be displayed here</p>
-            </div>
-          </div>
-        </div>
-
         {/* Recent Activities */}
         <div className="bg-white p-6 rounded-lg border border-gray-200">
           <h3 className="text-lg font-medium text-gray-900 mb-4">Recent Activities</h3>
-          <div className="space-y-4">
+          <div className="space-y-4 max-h-80 overflow-y-auto">
             {recentActivities.map((activity) => (
-              <div key={activity.id} className="flex items-start space-x-3">
-                <div className="flex-shrink-0">
-                  <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center">
-                    <span className="text-xs font-medium text-blue-600">
-                      {activity.type.charAt(0)}
-                    </span>
-                  </div>
+              <div key={activity.id} className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50">
+                <div className="flex-shrink-0 mt-1">
+                  {getActivityIcon(activity.type)}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900">{activity.description}</p>
-                  <div className="flex items-center justify-between mt-1">
-                    <p className="text-sm text-gray-500">{activity.time}</p>
+                  <p className="text-sm font-medium text-gray-900 leading-tight">{activity.description}</p>
+                  <div className="flex items-center justify-between mt-2">
+                    <p className="text-xs text-gray-500">{getRelativeTime(activity.time)}</p>
                     {activity.amount && (
                       <p className="text-sm font-medium text-green-600">{activity.amount}</p>
                     )}
                   </div>
+                  {activity.client && (
+                    <p className="text-xs text-blue-600 mt-1">{activity.client}</p>
+                  )}
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Low Stock Alerts */}
+        <div className="bg-white p-6 rounded-lg border border-gray-200">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-medium text-gray-900">Inventory Alerts</h3>
+            <span className="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+              {lowStockItems.length} items
+            </span>
+          </div>
+          <div className="space-y-3">
+            {lowStockItems.map((item, index) => (
+              <div key={index} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-gray-900">{item.name}</p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    Current: {item.currentStock} | Min: {item.minStock}
+                  </p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className={`w-3 h-3 rounded-full ${
+                    item.urgency === 'high' ? 'bg-red-500' :
+                    item.urgency === 'medium' ? 'bg-yellow-500' : 'bg-green-500'
+                  }`}></span>
+                  <span className={`text-xs font-medium ${
+                    item.urgency === 'high' ? 'text-red-600' :
+                    item.urgency === 'medium' ? 'text-yellow-600' : 'text-green-600'
+                  }`}>
+                    {item.urgency.toUpperCase()}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <button className="w-full mt-4 text-sm text-blue-600 hover:text-blue-800 font-medium">
+            View All Inventory →
+          </button>
+        </div>
+      </div>
+
+      {/* Additional SME Dashboard Sections */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Top Products */}
+        <div className="bg-white p-6 rounded-lg border border-gray-200">
+          <h3 className="text-lg font-medium text-gray-900 mb-4">Top Products</h3>
+          <div className="space-y-3">
+            {SAMPLE_PRODUCTS.slice(0, 4).map((product, index) => (
+              <div key={product.id} className="flex items-center justify-between">
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-gray-900">{product.name}</p>
+                  <p className="text-xs text-gray-500">{product.category}</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-sm font-medium text-gray-900">{formatCurrency(product.price)}</p>
+                  <p className="text-xs text-gray-500">{product.stock} in stock</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Payment Follow-ups */}
+        <div className="bg-white p-6 rounded-lg border border-gray-200">
+          <h3 className="text-lg font-medium text-gray-900 mb-4">Payment Follow-ups</h3>
+          <div className="space-y-3">
+            {pendingFollowups.map((followup, index) => (
+              <div key={index} className="p-3 border border-gray-200 rounded-lg">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-sm font-medium text-gray-900">{followup.client}</p>
+                  <span className={`text-xs px-2 py-1 rounded-full font-medium ${
+                    followup.priority === 'high' ? 'bg-red-100 text-red-800' :
+                    followup.priority === 'medium' ? 'bg-yellow-100 text-yellow-800' :
+                    'bg-green-100 text-green-800'
+                  }`}>
+                    {followup.priority.toUpperCase()}
+                  </span>
+                </div>
+                <p className="text-sm text-gray-600">{followup.amount}</p>
+                <p className="text-xs text-red-600 mt-1">{followup.daysOverdue} days overdue</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Monthly Targets */}
+        <div className="bg-white p-6 rounded-lg border border-gray-200">
+          <h3 className="text-lg font-medium text-gray-900 mb-4">Monthly Targets</h3>
+          <div className="space-y-4">
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm font-medium text-gray-900">Sales Target</span>
+                <span className="text-sm text-gray-600">₹12,00,000</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="bg-green-600 h-2 rounded-full" style={{ width: '70.4%' }}></div>
+              </div>
+              <p className="text-xs text-gray-500 mt-1">₹8,45,250 achieved (70.4%)</p>
+            </div>
+
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm font-medium text-gray-900">New Clients</span>
+                <span className="text-sm text-gray-600">15</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="bg-blue-600 h-2 rounded-full" style={{ width: '53.3%' }}></div>
+              </div>
+              <p className="text-xs text-gray-500 mt-1">8 clients acquired (53.3%)</p>
+            </div>
+
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm font-medium text-gray-900">Orders</span>
+                <span className="text-sm text-gray-600">100</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="bg-purple-600 h-2 rounded-full" style={{ width: '85%' }}></div>
+              </div>
+              <p className="text-xs text-gray-500 mt-1">85 orders completed (85%)</p>
+            </div>
           </div>
         </div>
       </div>
